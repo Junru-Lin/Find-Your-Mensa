@@ -27,17 +27,6 @@
             android:layout_marginTop="5dp"
             android:src="@drawable/logo_mensa" />
 
-        <Button
-            android:id="@+id/help_button"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="5dp"
-            android:text="?"
-            app:rippleColor="@color/background_light_orange" />
-
     </RelativeLayout>
 
 
