@@ -1,4 +1,4 @@
-package com.junru.findyourmensa;
+ package com.junru.findyourmensa;
 
 import androidx.fragment.app.FragmentActivity;
 

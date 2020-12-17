@@ -4,7 +4,16 @@
     android:height="300dp"
     android:viewportWidth="300"
     android:viewportHeight="300">
-    
+    <path
+        android:strokeColor="#FABD41"
+        android:strokeWidth="1"
+        android:strokeMiterLimit="10"
+        android:pathData="M502.5,137.5" />
+    <path
+        android:strokeColor="#23211E"
+        android:strokeWidth="1"
+        android:strokeMiterLimit="10"
+        android:pathData="M161,146" />
     <path
         android:strokeColor="#C55614"
         android:strokeWidth="12"
