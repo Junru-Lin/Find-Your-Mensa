@@ -3,6 +3,8 @@
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -13,7 +15,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+
     private GoogleMap mMap;
+    private MenuItem item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,5 +46,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng dresden = new LatLng(51.050407, 13.737262);
         mMap.addMarker(new MarkerOptions().position(dresden).title("Marker in Dresden"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(dresden));
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.help_menu, menu);
+        return true;
     }
 }
