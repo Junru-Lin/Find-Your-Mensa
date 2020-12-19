@@ -12,6 +12,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 
 import gr.net.maroulis.library.EasySplashScreen;
 
+// By Junru Lin
+
 public class SplashScreenActivity extends AppCompatActivity {
 
     @Override

@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.TextView;
 
+// By Junru Lin
 public class HelpActivity extends AppCompatActivity {
 
     @Override
