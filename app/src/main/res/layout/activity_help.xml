@@ -32,8 +32,8 @@
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/helpinfo"
-        android:text="\n\n\n\n\n\nProblems? \nContact us via email\nfindyourmensa@gmail.com"
+        android:id="@+id/help_info"
+        android:text="\n\n\n\n\n\nProblems? \nContact us via email:\nfindyourmensa@gmail.com"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30sp"
