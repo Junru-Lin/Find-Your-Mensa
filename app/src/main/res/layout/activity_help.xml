@@ -29,30 +29,21 @@
             android:layout_marginTop="5dp"
             android:src="@drawable/logo_mensa" />
 
-        <ImageButton
-            android:id="@+id/help_button"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="5dp"
-            android:layout_marginTop="5dp"
-            android:padding="0dp"
-            android:scaleType="fitCenter"
-            android:background="@color/background_light_orange"
-            android:src="@drawable/help" />
-
     </RelativeLayout>
 
-
-
-    <fragment
-        android:id="@+id/Map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_below="@id/top_menu"
+    <TextView
+        android:id="@+id/helpinfo"
+        android:text="\n\n\n\n\n\nProblems? \nContact us via email\nfindyourmensa@gmail.com"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:fontFamily="@font/cuprum_regular"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        tools:context=".MapsActivity" />
+        android:layout_below="@id/top_menu" />
+
+
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -64,6 +55,7 @@
         app:itemIconTint="@color/text_color_dark_orange"
         app:itemTextColor="@color/text_color_dark_orange"
         android:layout_alignParentBottom="true"/>
+
 
 
 

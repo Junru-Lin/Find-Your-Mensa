@@ -16,7 +16,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FindYourMensa">
-        <activity android:name=".ListActivity"></activity>
+        <activity android:name=".HelpActivity"></activity>
+        <activity android:name=".ListActivity" />
         <activity android:name=".SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
