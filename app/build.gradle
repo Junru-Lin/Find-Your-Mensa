@@ -36,6 +36,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'gr.pantrif:easy-android-splash-screen:0.0.1'
     implementation files('libs/json-simple-1.1.jar')
+    implementation project(path: ':sqlite-android-3340000')
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
