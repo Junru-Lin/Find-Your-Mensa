@@ -1,5 +1,6 @@
  package com.junru.findyourmensa;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
 import android.content.Intent;
@@ -17,6 +18,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import static com.junru.findyourmensa.R.drawable.logo_mensa;
 
@@ -44,7 +46,29 @@ import static com.junru.findyourmensa.R.drawable.logo_mensa;
             }
         });
 
-
+         //Initialize and assign variable
+         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+         //Perform ItemSelectedListener
+         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+             @Override
+             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                 switch (menuItem.getItemId()) {
+                     case R.id.page_1:
+                         startActivity(new Intent(getApplicationContext(), ListActivity.class));
+                         overridePendingTransition(0,0);
+                         return true;
+                     case R.id.page_2:
+                         startActivity(new Intent(getApplicationContext(), FilterActivity.class));
+                         overridePendingTransition(0,0);
+                         return true;
+                     case R.id.page_3:
+                         startActivity(new Intent(getApplicationContext(), FavouritesActivity.class));
+                         overridePendingTransition(0,0);
+                         return true;
+                 }
+                 return false;
+             }
+         });
      }
 
      private void openHelpActivity() {
