@@ -92,7 +92,7 @@ import static com.junru.findyourmensa.R.drawable.logo_mensa;
         // Add a marker in Sydney and move the camera
         LatLng dresden = new LatLng(51.050407, 13.737262);
         mMap.addMarker(new MarkerOptions().position(dresden).title("Marker in Dresden"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(dresden));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(dresden, 14));
     }
 
 
