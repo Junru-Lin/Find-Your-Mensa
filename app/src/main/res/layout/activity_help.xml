@@ -6,7 +6,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_page"
+    android:id="@+id/help_page"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
@@ -20,6 +20,7 @@
         android:layout_marginTop="0dp"
         android:background="@color/background_light_orange"
         android:visibility="visible">
+
 
         <ImageView
             android:id="@+id/logo_View"

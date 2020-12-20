@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_page"
+    android:id="@+id/list_page"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
@@ -17,15 +17,16 @@
         android:background="@color/background_light_orange"
         android:visibility="visible" >
 
-        <ImageView
-            android:id="@+id/logo_View"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="5dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/logo_mensa" />
+        <TextView
+            android:id="@+id/list_title"
+            android:text="Mensa List"
+            android:textSize="30dp"
+            android:fontFamily="@font/cuprum_regular"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:textColor="@color/text_color_dark_orange"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp" />
 
         <ImageButton
             android:id="@+id/help_button"
