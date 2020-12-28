@@ -1,26 +1,27 @@
  package com.junru.findyourmensa;
 
-import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
+ import android.content.Intent;
+ import android.os.Bundle;
+ import android.os.StrictMode;
+ import android.util.Log;
+ import android.view.MenuItem;
+ import android.view.View;
+ import android.widget.ImageButton;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.Toolbar;
+ import androidx.annotation.NonNull;
+ import androidx.fragment.app.FragmentActivity;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+ import com.google.android.gms.maps.CameraUpdateFactory;
+ import com.google.android.gms.maps.GoogleMap;
+ import com.google.android.gms.maps.OnMapReadyCallback;
+ import com.google.android.gms.maps.SupportMapFragment;
+ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+ import com.google.android.gms.maps.model.LatLng;
+ import com.google.android.gms.maps.model.MarkerOptions;
+ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import static com.junru.findyourmensa.R.drawable.logo_mensa;
+ import java.util.HashMap;
+ import java.util.*;
 
  public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -89,11 +90,29 @@ import static com.junru.findyourmensa.R.drawable.logo_mensa;
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
+        // Add a marker in Dresden and move the camera
         LatLng dresden = new LatLng(51.050407, 13.737262);
         mMap.addMarker(new MarkerOptions().position(dresden).title("Marker in Dresden"));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(dresden, 14));
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);//to solve NetworkOnMainThreadException
+
+        Parser parser = new Parser("https://openmensa.org/api/v2/canteens"); //create Parser
+        Data data = new Data(parser, System.out); //create Data
+        data.initialize(); // initialize Data
+
+        Set<Canteen> MensaInDresden = data.getCanteenByCity("Dresden"); //got a certain canteen
+        for (Canteen canteen: MensaInDresden) {
+            LatLng canteenLatLng = new LatLng(canteen.getLatitude(),canteen.getLongitude());
+            String canteenName = canteen.getName();
+            mMap.addMarker(new MarkerOptions().position(canteenLatLng).title(canteenName + "Marker"));
+            }
+
     }
+
+
+
 
 
 }
