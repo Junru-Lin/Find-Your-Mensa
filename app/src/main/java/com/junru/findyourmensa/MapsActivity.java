@@ -31,8 +31,7 @@
 
      private GoogleMap mMap;
      private ImageButton button;
-     private Marker Somewhere;
-     private int markerclicked;
+
 
      @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,7 +111,7 @@
             LatLng canteenLatLng = new LatLng(canteen.getLatitude(),canteen.getLongitude());
             String canteenName = canteen.getName();
             String canteenAddress = canteen.getAddress();
-            Somewhere = mMap.addMarker(new MarkerOptions()
+            mMap.addMarker(new MarkerOptions()
                     .position(canteenLatLng)
                     .title(canteenName)
                     .snippet(canteenAddress));
@@ -136,16 +135,12 @@
                     ImageView im = (ImageView) v.findViewById(R.id.imageView1);
                     TextView tv1 = (TextView) v.findViewById(R.id.textView1);
                     TextView tv2 = (TextView) v.findViewById(R.id.textView2);
-                    String title=arg0.getTitle();
-                    String informations=arg0.getSnippet();
+                    String title = arg0.getTitle();
+                    String informations = arg0.getSnippet();
 
                     tv1.setText(title);
                     tv2.setText(informations);
-
-                    if(onMarkerClick(arg0)==true && markerclicked==1){
-                        im.setImageResource(R.drawable.logo_mensa);
-                    }
-
+                    im.setImageResource(R.drawable.logo_mensa);
 
                     return v;
 
@@ -155,15 +150,6 @@
 
     }
 
-     public boolean onMarkerClick(final Marker marker) {
-
-         if (marker.equals(Somewhere))
-         {
-             markerclicked = 1;
-             return true;
-         }
-         return false;
-     }
 
 
 
