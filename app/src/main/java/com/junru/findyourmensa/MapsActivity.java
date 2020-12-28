@@ -7,6 +7,8 @@
  import android.view.MenuItem;
  import android.view.View;
  import android.widget.ImageButton;
+ import android.widget.ImageView;
+ import android.widget.TextView;
 
  import androidx.annotation.NonNull;
  import androidx.fragment.app.FragmentActivity;
@@ -17,6 +19,7 @@
  import com.google.android.gms.maps.SupportMapFragment;
  import com.google.android.gms.maps.model.BitmapDescriptorFactory;
  import com.google.android.gms.maps.model.LatLng;
+ import com.google.android.gms.maps.model.Marker;
  import com.google.android.gms.maps.model.MarkerOptions;
  import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -26,8 +29,10 @@
  public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
 
-    private GoogleMap mMap;
+     private GoogleMap mMap;
      private ImageButton button;
+     private Marker Somewhere;
+     private int markerclicked;
 
      @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,12 +111,59 @@
         for (Canteen canteen: MensaInDresden) {
             LatLng canteenLatLng = new LatLng(canteen.getLatitude(),canteen.getLongitude());
             String canteenName = canteen.getName();
-            mMap.addMarker(new MarkerOptions().position(canteenLatLng).title(canteenName + "Marker"));
+            String canteenAddress = canteen.getAddress();
+            Somewhere = mMap.addMarker(new MarkerOptions()
+                    .position(canteenLatLng)
+                    .title(canteenName)
+                    .snippet(canteenAddress));
+            mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
+
+                // Use default InfoWindow frame
+                @Override
+                public View getInfoWindow(Marker arg0) {
+                    return null;
+                }
+
+                // Defines the contents of the InfoWindow
+                @Override
+                public View getInfoContents(Marker arg0) {
+
+                    // Getting view from the layout file infowindow_layout.xml
+                    View v = getLayoutInflater().inflate(R.layout.infowindow_layout, null);
+
+                    LatLng latLng = arg0.getPosition();
+
+                    ImageView im = (ImageView) v.findViewById(R.id.imageView1);
+                    TextView tv1 = (TextView) v.findViewById(R.id.textView1);
+                    TextView tv2 = (TextView) v.findViewById(R.id.textView2);
+                    String title=arg0.getTitle();
+                    String informations=arg0.getSnippet();
+
+                    tv1.setText(title);
+                    tv2.setText(informations);
+
+                    if(onMarkerClick(arg0)==true && markerclicked==1){
+                        im.setImageResource(R.drawable.logo_mensa);
+                    }
+
+
+                    return v;
+
+                }
+            });
             }
 
     }
 
+     public boolean onMarkerClick(final Marker marker) {
 
+         if (marker.equals(Somewhere))
+         {
+             markerclicked = 1;
+             return true;
+         }
+         return false;
+     }
 
 
 
