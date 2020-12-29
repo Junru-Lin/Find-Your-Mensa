@@ -1,39 +1,44 @@
- package com.junru.findyourmensa;
+package com.junru.findyourmensa;
 
- import android.content.Intent;
- import android.os.Bundle;
- import android.os.StrictMode;
- import android.util.Log;
- import android.view.MenuItem;
- import android.view.View;
- import android.widget.ImageButton;
- import android.widget.ImageView;
- import android.widget.TextView;
+import android.content.Intent;
+import android.Manifest;
+import android.os.Bundle;
+import android.os.StrictMode;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.content.pm.PackageManager;
+import android.widget.Toast;
 
- import androidx.annotation.NonNull;
- import androidx.fragment.app.FragmentActivity;
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
 
- import com.google.android.gms.maps.CameraUpdateFactory;
- import com.google.android.gms.maps.GoogleMap;
- import com.google.android.gms.maps.OnMapReadyCallback;
- import com.google.android.gms.maps.SupportMapFragment;
- import com.google.android.gms.maps.model.BitmapDescriptorFactory;
- import com.google.android.gms.maps.model.LatLng;
- import com.google.android.gms.maps.model.Marker;
- import com.google.android.gms.maps.model.MarkerOptions;
- import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
- import java.util.HashMap;
- import java.util.*;
+import java.util.HashMap;
+import java.util.*;
 
- public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
-
-
-     private GoogleMap mMap;
-     private ImageButton button;
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
 
-     @Override
+    private GoogleMap mMap;
+    private ImageButton button;
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
@@ -44,44 +49,44 @@
         mapFragment.getMapAsync(this);
 
         button = findViewById(R.id.help_button);
-        button.setOnClickListener(new View.OnClickListener(){
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openHelpActivity();
             }
         });
 
-         //Initialize and assign variable
-         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-         //Perform ItemSelectedListener
-         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-             @Override
-             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                 switch (menuItem.getItemId()) {
-                     case R.id.page_1:
-                         startActivity(new Intent(getApplicationContext(), ListActivity.class));
-                         overridePendingTransition(0,0);
-                         return true;
-                     case R.id.page_2:
-                         startActivity(new Intent(getApplicationContext(), FilterActivity.class));
-                         overridePendingTransition(0,0);
-                         return true;
-                     case R.id.page_3:
-                         startActivity(new Intent(getApplicationContext(), FavouritesActivity.class));
-                         overridePendingTransition(0,0);
-                         return true;
-                 }
-                 return false;
-             }
-         });
-     }
+        //Initialize and assign variable
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        //Perform ItemSelectedListener
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.page_1:
+                        startActivity(new Intent(getApplicationContext(), ListActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.page_2:
+                        startActivity(new Intent(getApplicationContext(), FilterActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.page_3:
+                        startActivity(new Intent(getApplicationContext(), FavouritesActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                }
+                return false;
+            }
+        });
+    }
 
-     private void openHelpActivity() {
-         Intent intent = new Intent(this, HelpActivity.class);
-         startActivity(intent);
-     }
+    private void openHelpActivity() {
+        Intent intent = new Intent(this, HelpActivity.class);
+        startActivity(intent);
+    }
 
-     /**
+    /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
      * This is where we can add markers or lines, add listeners or move the camera. In this case,
@@ -93,6 +98,15 @@
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            mMap.setMyLocationEnabled(true);
+        } else {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1340);
+        }
+        mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.getUiSettings().setMyLocationButtonEnabled(true);
 
         // Add a marker in Dresden and move the camera
         LatLng dresden = new LatLng(51.050407, 13.737262);
@@ -107,8 +121,8 @@
         data.initialize(); // initialize Data
 
         Set<Canteen> MensaInDresden = data.getCanteenByCity("Dresden"); //got a certain canteen
-        for (Canteen canteen: MensaInDresden) {
-            LatLng canteenLatLng = new LatLng(canteen.getLatitude(),canteen.getLongitude());
+        for (Canteen canteen : MensaInDresden) {
+            LatLng canteenLatLng = new LatLng(canteen.getLatitude(), canteen.getLongitude());
             String canteenName = canteen.getName();
             String canteenAddress = canteen.getAddress();
             mMap.addMarker(new MarkerOptions()
@@ -146,11 +160,17 @@
 
                 }
             });
-            }
+        }
 
     }
 
-
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            mMap.setMyLocationEnabled(true);
+        } else {
+            Toast.makeText(this, "Location cannot be obtained due to missing permission.", Toast.LENGTH_LONG).show();
+        }
+    }
 
 
 }
