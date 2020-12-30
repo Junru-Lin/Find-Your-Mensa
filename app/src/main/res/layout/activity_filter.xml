@@ -4,8 +4,7 @@
 
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
     android:id="@+id/filter_page"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -23,8 +22,8 @@
 
         <TextView
             android:id="@+id/filter_title"
-            android:text="Filter"
-            android:textSize="30dp"
+            android:text="@string/filter"
+            android:textSize="30sp"
             android:fontFamily="@font/cuprum_regular"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
