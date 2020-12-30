@@ -4,8 +4,7 @@
 
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+
     android:id="@+id/favourite_page"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -22,8 +21,8 @@
 
         <TextView
             android:id="@+id/favourite_title"
-            android:text="Your Favourites"
-            android:textSize="30dp"
+            android:text="@string/favourites"
+            android:textSize="30sp"
             android:fontFamily="@font/cuprum_regular"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
