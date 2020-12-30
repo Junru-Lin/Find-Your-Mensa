@@ -8,10 +8,11 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class DishPlan extends AppCompatActivity {
+public class DishPlanActivity extends AppCompatActivity {
 
     private ImageButton button;
 
@@ -19,6 +20,13 @@ public class DishPlan extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dish_plan);
+
+        Intent intent = getIntent();
+        String mensaName = intent.getStringExtra(getPackageName());
+
+        TextView textViewMensaName = findViewById(R.id.mensa_name);
+        textViewMensaName.setText(mensaName);
+
 
         button = findViewById(R.id.help_button);
         button.setOnClickListener(new View.OnClickListener(){

@@ -18,25 +18,18 @@
         android:background="@color/background_light_orange"
         android:visibility="visible">
 
-        <ImageView
-            android:id="@+id/logo_View"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:src="@drawable/logo_mensa" />
+
 
         <TextView
             android:id="@+id/mensa_name"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:layout_toRightOf="@id/logo_View"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
             android:textSize="30sp"
             android:fontFamily="@font/cuprum_regular"
             android:textColor="@color/text_color_dark_orange"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"/>
 
 

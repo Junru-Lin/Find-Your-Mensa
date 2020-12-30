@@ -1,39 +1,36 @@
 package com.junru.findyourmensa;
 
-import android.content.Intent;
 import android.Manifest;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.StrictMode;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.content.pm.PackageManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.HashMap;
-import java.util.*;
+import java.util.Set;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements
+        GoogleMap.OnInfoWindowClickListener,
+        OnMapReadyCallback {
 
 
     private GoogleMap mMap;
@@ -127,9 +124,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             LatLng canteenLatLng = new LatLng(canteen.getLatitude(), canteen.getLongitude());
             String canteenName = canteen.getName();
             String canteenAddress = canteen.getAddress();
-            mMap.addMarker(new MarkerOptions()
+            Marker marker =  mMap.addMarker(new MarkerOptions()
                     .position(canteenLatLng)
-                    .title(canteenName)
+                    .title(canteenName.split(",")[1].trim())
                     .snippet(canteenAddress));
             mMap.setInfoWindowAdapter(new GoogleMap.InfoWindowAdapter() {
 
@@ -158,10 +155,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     tv2.setText(informations);
                     im.setImageResource(R.drawable.logo_mensa);
 
+
+
                     return v;
+
 
                 }
             });
+            mMap.setOnInfoWindowClickListener(this);
         }
 
     }
@@ -175,4 +176,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        Intent intent = new Intent(this, DishPlanActivity.class);
+        String title = marker.getTitle();
+        intent.putExtra(getPackageName(), title);
+        startActivity(intent);
+    }
 }
