@@ -2,6 +2,8 @@ package com.junru.findyourmensa;
 
 import android.content.Intent;
 import android.Manifest;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;

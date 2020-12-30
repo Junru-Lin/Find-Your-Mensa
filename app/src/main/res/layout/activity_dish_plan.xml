@@ -83,7 +83,7 @@
         android:layout_below="@id/hours"
         android:background="@color/background_light_orange"
         android:text="@string/dish_plan"
-        android:textSize="18sp"
+        android:textSize="25dp"
         android:fontFamily="@font/cuprum_regular"
         android:textColor="@color/text_color_dark_orange"
         android:padding="10dp"
@@ -96,7 +96,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/dish_plan"
         android:columnCount="2"
-        android:layout_margin="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
         tools:context=".GridLayoutActivity" >
 
         <Button
