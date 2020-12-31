@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -123,6 +124,7 @@ public class MapsActivity extends FragmentActivity implements
         for (Canteen canteen : MensaInDresden) {
             LatLng canteenLatLng = new LatLng(canteen.getLatitude(), canteen.getLongitude());
             String canteenName = canteen.getName();
+            Log.i("nammmme",canteenName);
             String canteenAddress = canteen.getAddress();
             Marker marker =  mMap.addMarker(new MarkerOptions()
                     .position(canteenLatLng)
