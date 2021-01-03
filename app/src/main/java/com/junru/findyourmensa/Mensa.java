@@ -4,19 +4,26 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "mensa_table")
+@Entity(tableName = "MensaOpenTime")
 
 public class Mensa {
+
+    protected String OpenTime;
+
     @PrimaryKey
     @NonNull
-    private String Name;
+    protected String MensaName;
 
     public String getName() {
-        return Name;
+        return MensaName;
+    }
+
+    public String getTime() {
+        return OpenTime;
     }
 
     public void setName(String mensa_name) {
-        this.Name = mensa_name;
+        this.MensaName = mensa_name;
     }
 }
 
