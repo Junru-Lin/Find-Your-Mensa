@@ -1,3 +1,2 @@
-include ':sqlite-android-3340000'
 include ':app'
 rootProject.name = "Find Your Mensa"
