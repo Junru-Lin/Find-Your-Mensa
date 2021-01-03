@@ -4,7 +4,7 @@
     <string name="opening_hours">Opening Hours:</string>
     <string name="dish_plan">Dish Plan</string>
     <string name="mensa_list">Mensa List</string>
-    <string name="help_message">Problems? Contact us via email: findyourmensa@gmail.com</string>
+    <string name="help_message">Problems?\n Contact us via email: \nfindyourmensa@gmail.com</string>
     <string name="filter">Filter</string>
     <string name="favourites">Your Favourites</string>
 </resources>

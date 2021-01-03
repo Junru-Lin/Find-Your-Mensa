@@ -54,6 +54,7 @@
         android:layout_below="@id/top_menu"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
+        android:layout_above="@id/bottom_navigation"
         tools:context=".MapsActivity" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
