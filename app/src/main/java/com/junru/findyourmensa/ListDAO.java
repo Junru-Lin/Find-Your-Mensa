@@ -15,9 +15,10 @@ public interface ListDAO {
     @Update
     public void update(Mensa mensa);
 
-    @Query("SELECT * FROM mensa_table")
+    @Query("SELECT MensaName FROM MensaOpenTime")
     public List<Mensa> getAllMensa();
 
-    @Query("SELECT * FROM mensa_table WHERE Name = :mensa_name")
+    @Query("SELECT * FROM MensaOpenTime WHERE MensaName = :mensa_name")
     public List<Mensa> getMensaInfoByName(String mensa_name);
+
 }
