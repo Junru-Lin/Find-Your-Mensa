@@ -2,6 +2,7 @@ package com.junru.findyourmensa;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "MensaOpenTime")

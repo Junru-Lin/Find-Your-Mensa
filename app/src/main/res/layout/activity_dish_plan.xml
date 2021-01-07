@@ -58,6 +58,7 @@
         android:fontFamily="@font/b612_regular"
         android:textSize="18sp"/>
 
+
     <TextView
         android:id="@+id/hours"
         android:layout_width="match_parent"

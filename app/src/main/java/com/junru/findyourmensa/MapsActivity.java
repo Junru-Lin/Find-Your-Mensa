@@ -124,7 +124,6 @@ public class MapsActivity extends FragmentActivity implements
         for (Canteen canteen : MensaInDresden) {
             LatLng canteenLatLng = new LatLng(canteen.getLatitude(), canteen.getLongitude());
             String canteenName = canteen.getName();
-            Log.i("nammmme",canteenName);
             String canteenAddress = canteen.getAddress();
             Marker marker =  mMap.addMarker(new MarkerOptions()
                     .position(canteenLatLng)

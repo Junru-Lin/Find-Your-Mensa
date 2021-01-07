@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.RoomWarnings;
 import androidx.room.Update;
 import java.util.List;
 
@@ -20,5 +21,6 @@ public interface ListDAO {
 
     @Query("SELECT * FROM MensaOpenTime WHERE MensaName = :mensa_name")
     public List<Mensa> getMensaInfoByName(String mensa_name);
+
 
 }
