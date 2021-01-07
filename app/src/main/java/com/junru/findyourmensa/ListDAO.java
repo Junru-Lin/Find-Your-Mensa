@@ -17,10 +17,13 @@ public interface ListDAO {
     public void update(Mensa mensa);
 
     @Query("SELECT MensaName FROM MensaOpenTime")
-    public List<Mensa> getAllMensa();
+    @SuppressWarnings(RoomWarnings.CURSOR_MISMATCH) public List<Mensa> getAllMensa();
 
     @Query("SELECT * FROM MensaOpenTime WHERE MensaName = :mensa_name")
     public List<Mensa> getMensaInfoByName(String mensa_name);
+
+    @Query("SELECT * FROM MensaOpenTime WHERE MensaName LIKE '%' || :mensaName || '%' ")
+    public List<Mensa> getSearchResult(String mensaName);
 
 
 }

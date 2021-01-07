@@ -29,11 +29,13 @@ import java.util.List;
 
 import static com.junru.findyourmensa.ListDAO.*;
 
+
 public class DishPlanActivity extends AppCompatActivity {
 
     String db_name = "mensa_opentime.db";
     ListDAO listdao;
-
+    List<Mensa> open_time_list;
+    TextView time_view;
     private ImageButton button;
 
     @RequiresApi(api = Build.VERSION_CODES.O)
@@ -48,9 +50,30 @@ public class DishPlanActivity extends AppCompatActivity {
         TextView textViewMensaName = findViewById(R.id.mensa_name);
         textViewMensaName.setText(mensaName);
 
+        final File dbFile = this.getDatabasePath(db_name);
 
+        if (!dbFile.exists()) {
+            try {
+                copyDatabaseFile(dbFile.getAbsolutePath());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
 
+        AppDatabase database =
+                Room.databaseBuilder(this, AppDatabase.class, db_name)
+                        .allowMainThreadQueries()
+                        .build();
 
+        listdao = database.getListDAO();
+
+        open_time_list = listdao.getSearchResult(mensaName);
+
+        time_view = findViewById(R.id.hours);
+
+        ArrayAdapter<CharSequence> adapter = createAdapterHtml(open_time_list);
+
+        time_view.setText(open_time_list.get(0).getTime());
 
 
 
@@ -61,6 +84,7 @@ public class DishPlanActivity extends AppCompatActivity {
             public void onClick(View v) {
                 openHelpActivity();
             }
+            
         });
 
         //Initialize and assign variable
@@ -95,6 +119,38 @@ public class DishPlanActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void copyDatabaseFile(String destinationPath) throws IOException {
+
+        InputStream assetsDB = this.getAssets().open(db_name);
+        OutputStream dbOut = new FileOutputStream(destinationPath);
+
+        byte[] buffer = new byte[1024];
+
+        int length;
+
+        while ((length = assetsDB.read(buffer)) > 0) {
+
+            dbOut.write(buffer, 0, length);
+        }
+
+        dbOut.flush();
+        dbOut.close();
+    }
+
+    private ArrayAdapter<CharSequence> createAdapterHtml(List<Mensa> u_list) {
+
+        Spanned[] html_array = new Spanned[u_list.size()];
+
+        for(int i = 0 ; i < u_list.size(); i++) {
+            html_array[i] = Html.fromHtml(u_list.get(i).getName());
+        }
+
+        ArrayAdapter<CharSequence> my_adapter =
+                new ArrayAdapter<CharSequence>(this, R.layout.list_item, html_array);
+
+        return my_adapter;
+
+    }
 
 
 }

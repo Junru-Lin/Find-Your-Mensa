@@ -65,7 +65,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/open"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/b612_regular"
         android:textSize="12sp"/>
 
