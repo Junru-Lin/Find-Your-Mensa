@@ -9,7 +9,6 @@ import androidx.room.PrimaryKey;
 public class Mensa {
 
     protected String OpenTime;
-
     @PrimaryKey
     @NonNull
     protected String MensaName;
@@ -18,12 +17,17 @@ public class Mensa {
         return MensaName;
     }
 
+    public void setName(String mensa_name) {
+        this.MensaName = mensa_name;
+    }
+
     public String getTime() {
         return OpenTime;
     }
 
-    public void setName(String mensa_name) {
-        this.MensaName = mensa_name;
+    public void setTime(String open_time) {
+        this.OpenTime = open_time;
     }
+
 }
 

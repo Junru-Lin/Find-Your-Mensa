@@ -21,4 +21,7 @@ public interface ListDAO {
     @Query("SELECT * FROM MensaOpenTime WHERE MensaName = :mensa_name")
     public List<Mensa> getMensaInfoByName(String mensa_name);
 
+    @Query("SELECT * FROM MensaOpenTime WHERE MensaName LIKE '%' || :mensaName || '%' ")
+    public List<Mensa> getSearchResult(String mensaName);
+
 }
