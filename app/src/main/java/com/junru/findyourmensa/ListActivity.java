@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
@@ -65,6 +66,19 @@ public class ListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openHelpActivity();
+            }
+        });
+
+        //Click on the list view item and go to the individual Dish Plan
+
+        list_view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position,
+                                    long id) {
+                String mensa_name = mensa_list.get(position).getName();
+                Intent intent = new Intent(ListActivity.this, DishPlanActivity.class);
+                intent.putExtra(getPackageName(), mensa_name);
+                startActivity(intent);
             }
         });
     }
