@@ -55,6 +55,7 @@
         android:text="@string/opening_hours"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="15dp"
+        android:textColor="@color/black"
         android:fontFamily="@font/b612_regular"
         android:textSize="18sp"/>
 
@@ -66,6 +67,7 @@
         android:layout_below="@id/open"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
+        android:textColor="@color/black"
         android:fontFamily="@font/b612_regular"
         android:textSize="12sp"/>
 
