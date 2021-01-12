@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -25,7 +26,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
+import java.time.temporal.ChronoField;
 import java.util.List;
+import java.time.LocalDate;
 
 import static com.junru.findyourmensa.ListDAO.*;
 
@@ -73,9 +78,18 @@ public class DishPlanActivity extends AppCompatActivity {
 
         ArrayAdapter<CharSequence> adapter = createAdapterHtml(open_time_list);
 
-        time_view.setText(open_time_list.get(0).getTime());
+        time_view.setText(open_time_list.get(0).getTime()); // to display opening hours
 
-
+        Button today_button = findViewById(R.id.button2);
+        LocalDate today = LocalDate.now();
+        DateTimeFormatter formatter = new DateTimeFormatterBuilder()
+                .appendPattern("DD.MM.YYYY[HH:mm:ss]")
+                .parseDefaulting(ChronoField.HOUR_OF_DAY, 0)
+                .parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0)
+                .parseDefaulting(ChronoField.SECOND_OF_MINUTE, 0)
+                .toFormatter();
+        String todayStr = today.format(formatter);
+        today_button.setText(todayStr + "\n"+"today"); //display the date of today on button
 
 
         button = findViewById(R.id.help_button);
