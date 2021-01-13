@@ -19,6 +19,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.File;
@@ -79,7 +80,7 @@ public class DishPlanActivity extends AppCompatActivity {
 
         ArrayAdapter<CharSequence> adapter = createAdapterHtml(open_time_list);
 
-        time_view.setText(open_time_list.get(0).getTime()); // to display opening hours
+        time_view.setText(open_time_list.get(0).getTime()); //display opening hours
 
         Button today_button = findViewById(R.id.button2);
         LocalDate today = LocalDate.now();
@@ -91,36 +92,90 @@ public class DishPlanActivity extends AppCompatActivity {
                 .toFormatter();
         String todayStr = today.format(formatter);
         today_button.setText(todayStr + "\n"+"today"); //display the date of today on button
+        today_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Button b = (Button)v;
+                String dateWeek = b.getText().toString() + "\n" + mensaName;
+                openDayPlanActivity(dateWeek);
+            }
+
+        });
 
         Button yesterday_button = findViewById(R.id.button1);
         LocalDate yesterday = today.minusDays(1);
         DayOfWeek dow1 = yesterday.getDayOfWeek();
         String yesterdayStr = yesterday.format(formatter);
         yesterday_button.setText(yesterdayStr + "\n" + dow1);//display the date and day of week of yesterday on button
+        yesterday_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Button b = (Button)v;
+                String dateWeek = b.getText().toString() + "\n" + mensaName;
+                openDayPlanActivity(dateWeek);
+            }
+
+        });
 
         Button tmr_button = findViewById(R.id.button3);
         LocalDate tmr = today.plusDays(1);
         DayOfWeek dow2 = tmr.getDayOfWeek();
         String tmrStr = tmr.format(formatter);
         tmr_button.setText(tmrStr + "\n" + dow2);//display the date and day of week of tomorrow on button
+        tmr_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Button b = (Button)v;
+                String dateWeek = b.getText().toString() + "\n" + mensaName;
+                openDayPlanActivity(dateWeek);
+            }
+
+        });
 
         Button tmr2_button = findViewById(R.id.button4);
         LocalDate tmr2 = today.plusDays(2);
         DayOfWeek dow3 = tmr2.getDayOfWeek();
         String tmr2Str = tmr2.format(formatter);
         tmr2_button.setText(tmr2Str + "\n" + dow3);
+        tmr2_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Button b = (Button)v;
+                String dateWeek = b.getText().toString() + "\n" + mensaName;
+                openDayPlanActivity(dateWeek);
+            }
+
+        });
 
         Button tmr3_button = findViewById(R.id.button5);
         LocalDate tmr3 = today.plusDays(3);
         DayOfWeek dow4 = tmr3.getDayOfWeek();
         String tmr3Str = tmr3.format(formatter);
         tmr3_button.setText(tmr3Str + "\n" + dow4);
+        tmr3_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Button b = (Button)v;
+                String dateWeek = b.getText().toString() + "\n" + mensaName;
+                openDayPlanActivity(dateWeek);
+            }
+
+        });
 
         Button tmr4_button = findViewById(R.id.button6);
         LocalDate tmr4 = today.plusDays(4);
         DayOfWeek dow5 = tmr4.getDayOfWeek();
         String tmr4Str = tmr4.format(formatter);
         tmr4_button.setText(tmr4Str + "\n" + dow5);
+        tmr4_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Button b = (Button)v;
+                String dateWeek = b.getText().toString() + "\n" + mensaName;
+                openDayPlanActivity(dateWeek);
+            }
+
+        });
 
 
 
@@ -161,6 +216,11 @@ public class DishPlanActivity extends AppCompatActivity {
         });
     }
 
+    private void openDayPlanActivity(String dateWeek) {
+        Intent intent = new Intent(this, DayPlanActivity.class);
+        intent.putExtra(getPackageName(), dateWeek);
+        startActivity(intent);
+    }
 
 
     private void openHelpActivity() {

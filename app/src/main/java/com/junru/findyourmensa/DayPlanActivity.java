@@ -1,6 +1,9 @@
 package com.junru.findyourmensa;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +19,16 @@ public class DayPlanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_day_plan);
         recyclerView=findViewById(R.id.recyclerView);
+
+        Intent intent = getIntent();
+        String dateAndWeek = intent.getStringExtra(getPackageName()).split("\n")[1].toUpperCase() + ", " + intent.getStringExtra(getPackageName()).split("\n")[0];
+
+        TextView textViewDate = findViewById(R.id.date);
+        textViewDate.setText(dateAndWeek);
+
+        String mensaName = intent.getStringExtra(getPackageName()).split("\n")[2];
+        TextView textViewMensaName = findViewById(R.id.mensa_name);
+        textViewMensaName.setText(mensaName);
 
         // created new array list..
         recyclerDataArrayList=new ArrayList<>();
