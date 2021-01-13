@@ -112,7 +112,6 @@
             android:textColor="@color/text_color_dark_orange"
             android:textStyle="normal"
             android:fontFamily="@font/b612_regular"
-            android:text="12.01.2021\nTuesday"
             />
 
         <com.google.android.material.button.MaterialButton
@@ -129,7 +128,6 @@
             android:textColor="@color/text_color_dark_orange"
             android:textStyle="normal"
             android:fontFamily="@font/b612_regular"
-            android:text="12.01.2021\nTuesday"
             />
 
         <com.google.android.material.button.MaterialButton
@@ -145,8 +143,7 @@
             android:textSize="10dp"
             android:textColor="@color/text_color_dark_orange"
             android:textStyle="normal"
-            android:fontFamily="@font/b612_regular"
-            android:text="12.01.2021\nTuesday"/>
+            android:fontFamily="@font/b612_regular" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button4"
@@ -160,8 +157,7 @@
             android:textSize="10dp"
             android:textColor="@color/text_color_dark_orange"
             android:textStyle="normal"
-            android:fontFamily="@font/b612_regular"
-            android:text="12.01.2021\nTuesday"/>
+            android:fontFamily="@font/b612_regular" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button5"
@@ -175,8 +171,7 @@
             android:textSize="10dp"
             android:textColor="@color/text_color_dark_orange"
             android:textStyle="normal"
-            android:fontFamily="@font/b612_regular"
-            android:text="12.01.2021\nTuesday"/>
+            android:fontFamily="@font/b612_regular" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button6"
@@ -190,8 +185,7 @@
             android:textSize="10dp"
             android:textColor="@color/text_color_dark_orange"
             android:textStyle="normal"
-            android:fontFamily="@font/b612_regular"
-            android:text="12.01.2021\nTuesday"/>
+            android:fontFamily="@font/b612_regular" />
 
     </GridLayout>
 

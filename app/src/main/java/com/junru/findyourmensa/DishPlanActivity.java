@@ -26,6 +26,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.time.DayOfWeek;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
@@ -90,6 +91,40 @@ public class DishPlanActivity extends AppCompatActivity {
                 .toFormatter();
         String todayStr = today.format(formatter);
         today_button.setText(todayStr + "\n"+"today"); //display the date of today on button
+
+        Button yesterday_button = findViewById(R.id.button1);
+        LocalDate yesterday = today.minusDays(1);
+        DayOfWeek dow1 = yesterday.getDayOfWeek();
+        String yesterdayStr = yesterday.format(formatter);
+        yesterday_button.setText(yesterdayStr + "\n" + dow1);//display the date and day of week of yesterday on button
+
+        Button tmr_button = findViewById(R.id.button3);
+        LocalDate tmr = today.plusDays(1);
+        DayOfWeek dow2 = tmr.getDayOfWeek();
+        String tmrStr = tmr.format(formatter);
+        tmr_button.setText(tmrStr + "\n" + dow2);//display the date and day of week of tomorrow on button
+
+        Button tmr2_button = findViewById(R.id.button4);
+        LocalDate tmr2 = today.plusDays(2);
+        DayOfWeek dow3 = tmr2.getDayOfWeek();
+        String tmr2Str = tmr2.format(formatter);
+        tmr2_button.setText(tmr2Str + "\n" + dow3);
+
+        Button tmr3_button = findViewById(R.id.button5);
+        LocalDate tmr3 = today.plusDays(3);
+        DayOfWeek dow4 = tmr3.getDayOfWeek();
+        String tmr3Str = tmr3.format(formatter);
+        tmr3_button.setText(tmr3Str + "\n" + dow4);
+
+        Button tmr4_button = findViewById(R.id.button6);
+        LocalDate tmr4 = today.plusDays(4);
+        DayOfWeek dow5 = tmr4.getDayOfWeek();
+        String tmr4Str = tmr4.format(formatter);
+        tmr4_button.setText(tmr4Str + "\n" + dow5);
+
+
+
+
 
 
         button = findViewById(R.id.help_button);
