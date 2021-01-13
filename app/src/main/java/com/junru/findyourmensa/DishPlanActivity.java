@@ -127,7 +127,7 @@ public class DishPlanActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Button b = (Button)v;
                 String dateWeek = b.getText().toString() + "\n" + mensaName;
-                openDayPlanActivity(dateWeek);
+                openDayPlanActivity(dateWeek); //go to DayPlanActivity
             }
 
         });
