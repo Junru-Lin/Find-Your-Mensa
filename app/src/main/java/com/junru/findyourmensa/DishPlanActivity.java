@@ -243,7 +243,7 @@ public class DishPlanActivity extends AppCompatActivity {
         dbOut.flush();
         dbOut.close();
     }
-    
+
 
 
 }
