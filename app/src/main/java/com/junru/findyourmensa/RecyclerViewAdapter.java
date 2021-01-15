@@ -33,6 +33,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         // Set the data to textview and imageview.
         DataModel DataModel = courseDataArrayList.get(position);
         holder.text.setText(DataModel.getText());
+        holder.price.setText(DataModel.getPrice());
         //holder.image.setImageResource(recyclerData.getImgid());
     }
 
@@ -46,11 +47,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
         private TextView text;
+        private TextView price;
         //private ImageView image;
 
         public RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
             text = itemView.findViewById(R.id.textView);
+            price = itemView.findViewById(R.id.price);
             //image = itemView.findViewById(R.id.imageView);
         }
     }
