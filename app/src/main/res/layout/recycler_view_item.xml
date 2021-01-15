@@ -8,10 +8,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginLeft="30dp"
-        android:layout_marginBottom="20dp"
-        card_view:cardCornerRadius="15dp">
+        android:layout_height="150dp"
+        card_view:cardCornerRadius="0dp">
 
 
         <RelativeLayout
@@ -19,9 +17,15 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_gravity="center"
-            android:padding="10dp"
-            android:background="@color/background_light_orange">
+            android:layout_gravity="center">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:padding="5dp" />
+
 
             <TextView
                 android:id="@+id/textView"
@@ -30,16 +34,9 @@
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/cuprum_regular"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/cuprum_regular"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:layout_below="@+id/textView"/>
+                android:textSize="18sp"
+                android:layout_below="@+id/imageView"
+                android:background="@drawable/custom_list_item"/>
 
 
         </RelativeLayout>
