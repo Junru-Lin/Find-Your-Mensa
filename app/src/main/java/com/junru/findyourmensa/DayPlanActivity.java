@@ -2,8 +2,12 @@ package com.junru.findyourmensa;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -16,6 +20,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class DayPlanActivity extends AppCompatActivity {
 
@@ -42,6 +50,7 @@ public class DayPlanActivity extends AppCompatActivity {
 
         //display Mensa name
         String mensaName = dateAndWeek.split("\n")[2];
+        Log.i("mmmmmm",mensaName);
         TextView textViewMensaName = findViewById(R.id.mensa_name);
         textViewMensaName.setText(mensaName);
 
@@ -69,16 +78,37 @@ public class DayPlanActivity extends AppCompatActivity {
             }
         });
 
+        //initialize mensa meal
+        Parser parser = new Parser("https://openmensa.org/api/v2/canteens"); //create Parser
+        Data data = new Data(parser, System.out); //create Data
+        data.initialize(); // initialize Data
+        Canteen mensa = (Canteen) data.getCanteenByName("Dresden," + " " + mensaName).iterator().next(); //got this certain canteen (getCanteenByName returns a set)
+        data.initializeMeals(mensa); // initialized this mensa's meals
+        List<Meal> mensaToday = mensa.getMealsToday(); //got all of todays meals in this mensa
+
+
+
+
         // created new array list..
         recyclerDataArrayList=new ArrayList<>();
 
         // added data to array list
 
-        recyclerDataArrayList.add(new DataModel("Item1")); //,R.drawable.ic_gfglogo));
-        recyclerDataArrayList.add(new DataModel("Item2")); //,R.drawable.ic_gfglogo));
-        recyclerDataArrayList.add(new DataModel("Item3")); //,R.drawable.ic_gfglogo));
-        recyclerDataArrayList.add(new DataModel("Item4")); //,R.drawable.ic_gfglogo));
-        recyclerDataArrayList.add(new DataModel("Item5")); //,R.drawable.ic_gfglogo));
+        boolean emp = mensaToday.isEmpty();
+        if (emp == false) {
+            recyclerDataArrayList.add(new DataModel(mensaToday.get(0).toString())); //,R.drawable.ic_gfglogo));
+            recyclerDataArrayList.add(new DataModel(mensaToday.get(1).toString())); //,R.drawable.ic_gfglogo));
+            recyclerDataArrayList.add(new DataModel(mensaToday.get(2).toString()));//,R.drawable.ic_gfglogo));
+            //recyclerDataArrayList.add(new DataModel("Item4")); //,R.drawable.ic_gfglogo));
+            //recyclerDataArrayList.add(new DataModel("Item5")); //,R.drawable.ic_gfglogo));
+        }
+        else {
+            recyclerDataArrayList.add(new DataModel("Not available today")); //,R.drawable.ic_gfglogo));
+            recyclerDataArrayList.add(new DataModel("Not available today")); //,R.drawable.ic_gfglogo));
+            recyclerDataArrayList.add(new DataModel("Not available today")); //,R.drawable.ic_gfglogo));
+            //recyclerDataArrayList.add(new DataModel("Item4")); //,R.drawable.ic_gfglogo));
+            //recyclerDataArrayList.add(new DataModel("Item5")); //,R.drawable.ic_gfglogo));
+        }
 
         // added data from arraylist to adapter class.
         RecyclerViewAdapter adapter=new RecyclerViewAdapter(recyclerDataArrayList,this);
