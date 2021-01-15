@@ -2,14 +2,19 @@ package com.junru.findyourmensa;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.ArrayList;
 
 public class DayPlanActivity extends AppCompatActivity {
@@ -17,6 +22,8 @@ public class DayPlanActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArrayList<DataModel> recyclerDataArrayList;
     private ImageButton button;
+    private ImageButton next_button;
+    private ImageButton back_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,13 +31,17 @@ public class DayPlanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_day_plan);
         recyclerView=findViewById(R.id.recyclerView);
 
+
+        //display date and day of week
         Intent intent = getIntent();
-        String dateAndWeek = intent.getStringExtra(getPackageName()).split("\n")[1].toUpperCase() + ", " + intent.getStringExtra(getPackageName()).split("\n")[0];
+        String dateAndWeek = intent.getStringExtra(getPackageName());
+        String dateWeek = dateAndWeek.split("\n")[1].toUpperCase() + ", " + dateAndWeek.split("\n")[0];
 
         TextView textViewDate = findViewById(R.id.date);
-        textViewDate.setText(dateAndWeek);
+        textViewDate.setText(dateWeek);
 
-        String mensaName = intent.getStringExtra(getPackageName()).split("\n")[2];
+        //display Mensa name
+        String mensaName = dateAndWeek.split("\n")[2];
         TextView textViewMensaName = findViewById(R.id.mensa_name);
         textViewMensaName.setText(mensaName);
 
@@ -39,6 +50,22 @@ public class DayPlanActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openHelpActivity();
+            }
+        });
+
+        back_button = findViewById(R.id.back_button);
+        back_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openLastDayPlanActivity(dateAndWeek);
+            }
+        });
+
+        next_button = findViewById(R.id.next_button);
+        next_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openNextDayPlanActivity(dateAndWeek);
             }
         });
 
@@ -63,9 +90,47 @@ public class DayPlanActivity extends AppCompatActivity {
         // at last set adapter to recycler view.
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+
+        //Initialize and assign variable
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        //Perform ItemSelectedListener
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.page_1:
+                        startActivity(new Intent(getApplicationContext(), ListActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.page_2:
+                        startActivity(new Intent(getApplicationContext(), FilterActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                    case R.id.page_3:
+                        startActivity(new Intent(getApplicationContext(), FavouritesActivity.class));
+                        overridePendingTransition(0, 0);
+                        return true;
+                }
+                return false;
+            }
+        });
     }
+
     private void openHelpActivity() {
         Intent intent = new Intent(this, HelpActivity.class);
         startActivity(intent);
     }
+
+    private void openNextDayPlanActivity(String dateWeek) {
+        Intent intent = new Intent(this, DayPlanActivity.class);
+        intent.putExtra(getPackageName(), dateWeek);
+        startActivity(intent);
+    }
+
+    private void openLastDayPlanActivity(String dateWeek) {
+        Intent intent = new Intent(this, DayPlanActivity.class);
+        intent.putExtra(getPackageName(), dateWeek);
+        startActivity(intent);
+    }
+
 }
