@@ -78,8 +78,6 @@ public class DishPlanActivity extends AppCompatActivity {
 
         time_view = findViewById(R.id.hours);
 
-        ArrayAdapter<CharSequence> adapter = createAdapterHtml(open_time_list);
-
         time_view.setText(open_time_list.get(0).getTime()); //display opening hours
 
         Button today_button = findViewById(R.id.button2);
@@ -245,21 +243,7 @@ public class DishPlanActivity extends AppCompatActivity {
         dbOut.flush();
         dbOut.close();
     }
-
-    private ArrayAdapter<CharSequence> createAdapterHtml(List<Mensa> u_list) {
-
-        Spanned[] html_array = new Spanned[u_list.size()];
-
-        for(int i = 0 ; i < u_list.size(); i++) {
-            html_array[i] = Html.fromHtml(u_list.get(i).getName());
-        }
-
-        ArrayAdapter<CharSequence> my_adapter =
-                new ArrayAdapter<CharSequence>(this, R.layout.list_item, html_array);
-
-        return my_adapter;
-
-    }
+    
 
 
 }
