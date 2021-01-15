@@ -39,7 +39,7 @@ import static com.junru.findyourmensa.ListDAO.*;
 
 public class DishPlanActivity extends AppCompatActivity {
 
-    String db_name = "mensa_opentime.db";
+    String db_name = "mensa_db.db";
     ListDAO listdao;
     List<Mensa> open_time_list;
     TextView time_view;

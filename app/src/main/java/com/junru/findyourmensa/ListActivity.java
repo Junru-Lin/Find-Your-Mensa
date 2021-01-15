@@ -25,7 +25,7 @@ import java.util.List;
 
 public class ListActivity extends AppCompatActivity {
 
-    String db_name = "mensa_opentime.db";
+    String db_name = "mensa_db.db";
     ListDAO listdao;
     List<Mensa> mensa_list;
     ListView list_view;
