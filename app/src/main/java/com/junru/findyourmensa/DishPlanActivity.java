@@ -83,7 +83,7 @@ public class DishPlanActivity extends AppCompatActivity {
         Button today_button = findViewById(R.id.button2);
         LocalDate today = LocalDate.now();
         DateTimeFormatter formatter = new DateTimeFormatterBuilder()
-                .appendPattern("DD.MM.YYYY[HH:mm:ss]")
+                .appendPattern("yyyy-MM-dd[HH:mm:ss]")
                 .parseDefaulting(ChronoField.HOUR_OF_DAY, 0)
                 .parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0)
                 .parseDefaulting(ChronoField.SECOND_OF_MINUTE, 0)

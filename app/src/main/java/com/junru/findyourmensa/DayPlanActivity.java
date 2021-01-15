@@ -16,7 +16,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class DayPlanActivity extends AppCompatActivity {
@@ -38,13 +41,14 @@ public class DayPlanActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String dateAndWeek = intent.getStringExtra(getPackageName());
         String dateWeek = dateAndWeek.split("\n")[1].toUpperCase() + ", " + dateAndWeek.split("\n")[0];
+        String date = dateAndWeek.split("\n")[0];
+
 
         TextView textViewDate = findViewById(R.id.date);
         textViewDate.setText(dateWeek);
 
         //display Mensa name
         String mensaName = dateAndWeek.split("\n")[2];
-        Log.i("mmmmmm",mensaName);
         TextView textViewMensaName = findViewById(R.id.mensa_name);
         textViewMensaName.setText(mensaName);
 
@@ -79,7 +83,7 @@ public class DayPlanActivity extends AppCompatActivity {
         Canteen mensa = (Canteen) data.getCanteenByName("Dresden," + " " + mensaName).iterator().next(); //got this certain canteen (getCanteenByName returns a set)
         data.initializeMeals(mensa); // initialized this mensa's meals
         //List<Meal> mensaToday = mensa.getMealsToday(); //got all of todays meals in this mensa
-        List<Meal> mealToday = (List<Meal>) mensa.getMealsToday();
+        List<Meal> mealToday = (List<Meal>) mensa.getMealsByDate(date);
 
 
         // created new array list..
@@ -91,14 +95,14 @@ public class DayPlanActivity extends AppCompatActivity {
         int mealNum = mealToday.size();
         if (emp == false) {
             for(int i = 0; i < mealNum; i++){
-            recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName(), Double.toString(mealToday.get(i).getStudentPrice()))); }//,R.drawable.ic_gfglogo));
+            recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName(), Double.toString(mealToday.get(i).getStudentPrice()) + "€ [Stu] / " + Double.toString(mealToday.get(i).getEmployeePrice()) + "€")); }//,R.drawable.ic_gfglogo));
             //recyclerDataArrayList.add(new DataModel(mensaToday.get(1).toString())); //,R.drawable.ic_gfglogo));
             //recyclerDataArrayList.add(new DataModel(mensaToday.get(2).toString()));//,R.drawable.ic_gfglogo));
             //recyclerDataArrayList.add(new DataModel("Item4")); //,R.drawable.ic_gfglogo));
             //recyclerDataArrayList.add(new DataModel("Item5")); //,R.drawable.ic_gfglogo));
         }
         else {
-            recyclerDataArrayList.add(new DataModel("Not available today", "111")); //,R.drawable.ic_gfglogo));
+            recyclerDataArrayList.add(new DataModel("Not available today", " ")); //,R.drawable.ic_gfglogo));
             recyclerDataArrayList.add(new DataModel("Not available today"," ")); //,R.drawable.ic_gfglogo));
             //recyclerDataArrayList.add(new DataModel("Not available today")); //,R.drawable.ic_gfglogo));
             //recyclerDataArrayList.add(new DataModel("Item4")); //,R.drawable.ic_gfglogo));
