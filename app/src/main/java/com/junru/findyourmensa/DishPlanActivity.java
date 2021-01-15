@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.time.DayOfWeek;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
@@ -81,7 +82,8 @@ public class DishPlanActivity extends AppCompatActivity {
         time_view.setText(open_time_list.get(0).getTime()); //display opening hours
 
         Button today_button = findViewById(R.id.button2);
-        LocalDate today = LocalDate.now();
+        ZoneId zid = ZoneId.of("Europe/Berlin");
+        LocalDate today = LocalDate.now(zid);
         DateTimeFormatter formatter = new DateTimeFormatterBuilder()
                 .appendPattern("yyyy-MM-dd[HH:mm:ss]")
                 .parseDefaulting(ChronoField.HOUR_OF_DAY, 0)
