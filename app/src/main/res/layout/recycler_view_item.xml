@@ -42,7 +42,7 @@
                 android:textColor="@color/text_color_dark_orange"
                 android:textAlignment="center"
                 android:textSize="13sp"
-                android:layout_below="@+id/textView" />
+                android:layout_alignParentBottom= "true"/>
 
 
         </RelativeLayout>
