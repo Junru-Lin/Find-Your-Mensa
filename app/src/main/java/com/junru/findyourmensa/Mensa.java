@@ -10,8 +10,8 @@ import androidx.room.PrimaryKey;
 public class Mensa {
 
     protected String OpenTime;
-
-    @NonNull @PrimaryKey
+    @PrimaryKey
+    @NonNull
     protected String MensaName;
 
     public String getName() {

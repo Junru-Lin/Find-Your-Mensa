@@ -3,6 +3,7 @@ package com.junru.findyourmensa;
 public class DataModel {
 
     private String text;
+    private String price;
 
 
     public String getText() {
@@ -13,17 +14,16 @@ public class DataModel {
         this.text = text;
     }
 
-    /** public int getImgid() {
-        return imgid;
+    public String getPrice() {
+        return price;
     }
 
-    public void setImgid(int imgid) {
-        this.imgid = imgid;
+    public void setPrice(String price) {
+        this.price = price;
     }
-     **/
 
-    public DataModel(String text) { //, int imgid)
+    public DataModel(String text, String price) {
         this.text = text;
-        //this.imgid = imgid;
+        this.price = price;
     }
 }

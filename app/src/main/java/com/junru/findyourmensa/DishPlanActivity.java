@@ -28,6 +28,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.time.DayOfWeek;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.time.temporal.ChronoField;
@@ -39,7 +40,7 @@ import static com.junru.findyourmensa.ListDAO.*;
 
 public class DishPlanActivity extends AppCompatActivity {
 
-    String db_name = "mensa_db.db";
+    String db_name = "mensa_opentime.db";
     ListDAO listdao;
     List<Mensa> open_time_list;
     TextView time_view;
@@ -78,14 +79,13 @@ public class DishPlanActivity extends AppCompatActivity {
 
         time_view = findViewById(R.id.hours);
 
-        ArrayAdapter<CharSequence> adapter = createAdapterHtml(open_time_list);
-
         time_view.setText(open_time_list.get(0).getTime()); //display opening hours
 
         Button today_button = findViewById(R.id.button2);
-        LocalDate today = LocalDate.now();
+        ZoneId zid = ZoneId.of("Europe/Berlin");
+        LocalDate today = LocalDate.now(zid);
         DateTimeFormatter formatter = new DateTimeFormatterBuilder()
-                .appendPattern("DD.MM.YYYY[HH:mm:ss]")
+                .appendPattern("yyyy-MM-dd[HH:mm:ss]")
                 .parseDefaulting(ChronoField.HOUR_OF_DAY, 0)
                 .parseDefaulting(ChronoField.MINUTE_OF_HOUR, 0)
                 .parseDefaulting(ChronoField.SECOND_OF_MINUTE, 0)
@@ -246,20 +246,6 @@ public class DishPlanActivity extends AppCompatActivity {
         dbOut.close();
     }
 
-    private ArrayAdapter<CharSequence> createAdapterHtml(List<Mensa> u_list) {
-
-        Spanned[] html_array = new Spanned[u_list.size()];
-
-        for(int i = 0 ; i < u_list.size(); i++) {
-            html_array[i] = Html.fromHtml(u_list.get(i).getName());
-        }
-
-        ArrayAdapter<CharSequence> my_adapter =
-                new ArrayAdapter<CharSequence>(this, R.layout.list_item, html_array);
-
-        return my_adapter;
-
-    }
 
 
 }

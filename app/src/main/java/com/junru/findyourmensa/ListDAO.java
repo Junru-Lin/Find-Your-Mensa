@@ -16,8 +16,8 @@ public interface ListDAO {
     @Update
     public void update(Mensa mensa);
 
-    @Query("SELECT * FROM MensaOpenTime")
-    public List<Mensa> getAllMensa();
+    @Query("SELECT MensaName FROM MensaOpenTime")
+    @SuppressWarnings(RoomWarnings.CURSOR_MISMATCH) public List<Mensa> getAllMensa();
 
     @Query("SELECT * FROM MensaOpenTime WHERE MensaName = :mensa_name")
     public List<Mensa> getMensaInfoByName(String mensa_name);

@@ -108,7 +108,7 @@
             android:padding="40dp"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:textSize="10dp"
+            android:textSize="9.5dp"
             android:textColor="@color/text_color_dark_orange"
             android:textStyle="normal"
             android:fontFamily="@font/b612_regular"
@@ -124,7 +124,7 @@
             android:background="@drawable/custom_list_item"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:textSize="10dp"
+            android:textSize="9.5dp"
             android:textColor="@color/text_color_dark_orange"
             android:textStyle="normal"
             android:fontFamily="@font/b612_regular"
@@ -140,7 +140,7 @@
             android:background="@drawable/custom_list_item"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:textSize="10dp"
+            android:textSize="9.5dp"
             android:textColor="@color/text_color_dark_orange"
             android:textStyle="normal"
             android:fontFamily="@font/b612_regular" />
@@ -154,7 +154,7 @@
             android:background="@drawable/custom_list_item"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:textSize="10dp"
+            android:textSize="9.5dp"
             android:textColor="@color/text_color_dark_orange"
             android:textStyle="normal"
             android:fontFamily="@font/b612_regular" />
@@ -168,7 +168,7 @@
             android:background="@drawable/custom_list_item"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:textSize="10dp"
+            android:textSize="9.5dp"
             android:textColor="@color/text_color_dark_orange"
             android:textStyle="normal"
             android:fontFamily="@font/b612_regular" />
@@ -182,7 +182,7 @@
             android:background="@drawable/custom_list_item"
             android:insetTop="0dp"
             android:insetBottom="0dp"
-            android:textSize="10dp"
+            android:textSize="9.5dp"
             android:textColor="@color/text_color_dark_orange"
             android:textStyle="normal"
             android:fontFamily="@font/b612_regular" />
