@@ -134,7 +134,7 @@ public class MapsActivity extends FragmentActivity implements
             String canteenName = canteen.getName();
             String canteenAddress = canteen.getAddress();
             Marker marker =  mMap.addMarker(new MarkerOptions()
-                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.new_marker))
+                    .icon(BitmapDescriptorFactory.fromResource(R.drawable.marker2))
                     .anchor(0.5f, 1)
                     .position(canteenLatLng)
                     .title(canteenName.split(",")[1].trim())
