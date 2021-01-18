@@ -12,10 +12,19 @@ public class Favourite {
     @PrimaryKey
     public String description;
 
+    public void setDesc(String Desc) {
+        this.description = Desc;
+    }
+
     @NonNull
     public String mensa;
 
+    public void setTitle(String Title) { this.mensa = Title; }
+
+
     @NonNull
     public String price;
+
+    public void setPrice(String Price) { this.price = Price; }
 
 }
