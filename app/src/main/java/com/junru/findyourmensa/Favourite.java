@@ -9,7 +9,10 @@ import androidx.room.PrimaryKey;
 public class Favourite {
 
     @NonNull
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    public Integer ID;
+
+    @NonNull
     public String description;
 
     public void setDesc(String Desc) {
@@ -26,5 +29,15 @@ public class Favourite {
     public String price;
 
     public void setPrice(String Price) { this.price = Price; }
+
+    public String getDesc() {
+        return description;
+    }
+
+    public String getTile() {
+        return mensa;
+    }
+
+    public String getPrice() {return price;}
 
 }

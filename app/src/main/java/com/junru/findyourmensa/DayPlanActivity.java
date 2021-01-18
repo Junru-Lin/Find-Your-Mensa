@@ -15,9 +15,15 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
@@ -35,7 +41,7 @@ public class DayPlanActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ArrayList<DataModel> recyclerDataArrayList;
-    private ImageButton button;
+    private ImageButton button; //help button
     private ImageButton next_button;
     private ImageButton back_button;
     LocalDate date1;
@@ -46,6 +52,8 @@ public class DayPlanActivity extends AppCompatActivity {
     String date;
     String week;
     ZoneId zid = ZoneId.of("Europe/Berlin");
+
+
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -69,6 +77,8 @@ public class DayPlanActivity extends AppCompatActivity {
         String mensaName = dateAndWeek.split("\n")[2];
         TextView textViewMensaName = findViewById(R.id.mensa_name);
         textViewMensaName.setText(mensaName);
+
+
 
         button = findViewById(R.id.help_button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -108,15 +118,15 @@ public class DayPlanActivity extends AppCompatActivity {
                 int mealNum = mealToday.size();
                 if (emp == false) {
                     for(int i = 0; i < mealNum; i++){
-                    recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName(), Double.toString(mealToday.get(i).getStudentPrice()) + "€ [Stu] / " + Double.toString(mealToday.get(i).getEmployeePrice()) + "€")); }//,R.drawable.ic_gfglogo));
+                    recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName(), Double.toString(mealToday.get(i).getStudentPrice()) + "€ [Stu] / " + Double.toString(mealToday.get(i).getEmployeePrice()) + "€", mensaName)); }//,R.drawable.ic_gfglogo));
                     //recyclerDataArrayList.add(new DataModel(mensaToday.get(1).toString())); //,R.drawable.ic_gfglogo));
                     //recyclerDataArrayList.add(new DataModel(mensaToday.get(2).toString()));//,R.drawable.ic_gfglogo));
                     //recyclerDataArrayList.add(new DataModel("Item4")); //,R.drawable.ic_gfglogo));
                     //recyclerDataArrayList.add(new DataModel("Item5")); //,R.drawable.ic_gfglogo));
                 }
                 else {
-                    recyclerDataArrayList.add(new DataModel("Not available today", " ")); //,R.drawable.ic_gfglogo));
-                    recyclerDataArrayList.add(new DataModel("Not available today"," ")); //,R.drawable.ic_gfglogo));
+                    recyclerDataArrayList.add(new DataModel("Not available today", " ", mensaName)); //,R.drawable.ic_gfglogo));
+                    recyclerDataArrayList.add(new DataModel("Not available today"," ", mensaName)); //,R.drawable.ic_gfglogo));
                     //recyclerDataArrayList.add(new DataModel("Not available today")); //,R.drawable.ic_gfglogo));
                     //recyclerDataArrayList.add(new DataModel("Item4")); //,R.drawable.ic_gfglogo));
                     //recyclerDataArrayList.add(new DataModel("Item5")); //,R.drawable.ic_gfglogo));
@@ -127,7 +137,7 @@ public class DayPlanActivity extends AppCompatActivity {
 
                 // setting grid layout manager to implement grid view.
                 // in this method '2' represents number of columns to be displayed in grid view.
-                GridLayoutManager layoutManager=new GridLayoutManager(DayPlanActivity.this,2);
+                GridLayoutManager layoutManager = new GridLayoutManager(DayPlanActivity.this,2);
 
                 // at last set adapter to recycler view.
                 recyclerView.setLayoutManager(layoutManager);
@@ -169,15 +179,15 @@ public class DayPlanActivity extends AppCompatActivity {
                     int mealNum = mealToday.size();
                     if (emp == false) {
                         for(int i = 0; i < mealNum; i++){
-                            recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName(), Double.toString(mealToday.get(i).getStudentPrice()) + "€ [Stu] / " + Double.toString(mealToday.get(i).getEmployeePrice()) + "€")); }//,R.drawable.ic_gfglogo));
+                            recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName(), Double.toString(mealToday.get(i).getStudentPrice()) + "€ [Stu] / " + Double.toString(mealToday.get(i).getEmployeePrice()) + "€", mensaName)); }//,R.drawable.ic_gfglogo));
                         //recyclerDataArrayList.add(new DataModel(mensaToday.get(1).toString())); //,R.drawable.ic_gfglogo));
                         //recyclerDataArrayList.add(new DataModel(mensaToday.get(2).toString()));//,R.drawable.ic_gfglogo));
                         //recyclerDataArrayList.add(new DataModel("Item4")); //,R.drawable.ic_gfglogo));
                         //recyclerDataArrayList.add(new DataModel("Item5")); //,R.drawable.ic_gfglogo));
                     }
                     else {
-                        recyclerDataArrayList.add(new DataModel("Not available today", " ")); //,R.drawable.ic_gfglogo));
-                        recyclerDataArrayList.add(new DataModel("Not available today"," ")); //,R.drawable.ic_gfglogo));
+                        recyclerDataArrayList.add(new DataModel("Not available today", " ", mensaName)); //,R.drawable.ic_gfglogo));
+                        recyclerDataArrayList.add(new DataModel("Not available today"," ", mensaName)); //,R.drawable.ic_gfglogo));
                         //recyclerDataArrayList.add(new DataModel("Not available today")); //,R.drawable.ic_gfglogo));
                         //recyclerDataArrayList.add(new DataModel("Item4")); //,R.drawable.ic_gfglogo));
                         //recyclerDataArrayList.add(new DataModel("Item5")); //,R.drawable.ic_gfglogo));
@@ -200,6 +210,7 @@ public class DayPlanActivity extends AppCompatActivity {
             }
         });
 
+
         //initialize mensa meal
         Parser parser = new Parser("https://openmensa.org/api/v2/canteens"); //create Parser
         Data data = new Data(parser, System.out); //create Data
@@ -210,7 +221,7 @@ public class DayPlanActivity extends AppCompatActivity {
 
 
         // created new array list..
-        recyclerDataArrayList=new ArrayList<>();
+        recyclerDataArrayList = new ArrayList<>();
 
         // added data to array list
 
@@ -218,22 +229,23 @@ public class DayPlanActivity extends AppCompatActivity {
         int mealNum = mealToday.size();
         if (emp == false) {
             for(int i = 0; i < mealNum; i++){
-            recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName(), Double.toString(mealToday.get(i).getStudentPrice()) + "€ [Stu] / " + Double.toString(mealToday.get(i).getEmployeePrice()) + "€")); }//,R.drawable.ic_gfglogo));
+            recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName(), Double.toString(mealToday.get(i).getStudentPrice()) + "€ [Stu] / " + Double.toString(mealToday.get(i).getEmployeePrice()) + "€", mensaName));
+            }//,R.drawable.ic_gfglogo));
             //recyclerDataArrayList.add(new DataModel(mensaToday.get(1).toString())); //,R.drawable.ic_gfglogo));
             //recyclerDataArrayList.add(new DataModel(mensaToday.get(2).toString()));//,R.drawable.ic_gfglogo));
             //recyclerDataArrayList.add(new DataModel("Item4")); //,R.drawable.ic_gfglogo));
             //recyclerDataArrayList.add(new DataModel("Item5")); //,R.drawable.ic_gfglogo));
         }
         else {
-            recyclerDataArrayList.add(new DataModel("Not available today", " ")); //,R.drawable.ic_gfglogo));
-            recyclerDataArrayList.add(new DataModel("Not available today"," ")); //,R.drawable.ic_gfglogo));
+            recyclerDataArrayList.add(new DataModel("Not available today", " ", mensaName)); //,R.drawable.ic_gfglogo));
+            recyclerDataArrayList.add(new DataModel("Not available today"," ", mensaName)); //,R.drawable.ic_gfglogo));
             //recyclerDataArrayList.add(new DataModel("Not available today")); //,R.drawable.ic_gfglogo));
             //recyclerDataArrayList.add(new DataModel("Item4")); //,R.drawable.ic_gfglogo));
             //recyclerDataArrayList.add(new DataModel("Item5")); //,R.drawable.ic_gfglogo));
         }
 
         // added data from arraylist to adapter class.
-        RecyclerViewAdapter adapter=new RecyclerViewAdapter(recyclerDataArrayList,this);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(recyclerDataArrayList,this);
 
         // setting grid layout manager to implement grid view.
         // in this method '2' represents number of columns to be displayed in grid view.
@@ -242,6 +254,7 @@ public class DayPlanActivity extends AppCompatActivity {
         // at last set adapter to recycler view.
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
+
 
         //Initialize and assign variable
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -272,6 +285,8 @@ public class DayPlanActivity extends AppCompatActivity {
         Intent intent = new Intent(this, HelpActivity.class);
         startActivity(intent);
     }
+
+
 
 
 }

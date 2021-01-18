@@ -37,10 +37,12 @@
 
             <TextView
                 android:id="@+id/mensa_name"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@id/like1"
+                android:textAlignment="textStart"
                 android:fontFamily="@font/cuprum_regular"
+                android:textSize="12sp"
                 android:textColor="@color/text_color_dark_orange"
                 />
 
@@ -49,11 +51,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:layout_below="@id/like1"
+                android:layout_below="@id/mensa_name"
                 android:textAlignment="center"
                 android:fontFamily="@font/cuprum_regular"
                 android:textColor="@color/black"
-                android:textSize="15sp" />
+                android:textSize="15sp"
+                android:layout_marginTop="5dp"/>
 
             <TextView
                 android:id="@+id/price"

@@ -89,7 +89,7 @@ public class ListActivity extends AppCompatActivity {
     }
 
 
-    private void copyDatabaseFile(String destinationPath) throws IOException {
+    public void copyDatabaseFile(String destinationPath) throws IOException {
 
         InputStream assetsDB = this.getAssets().open(db_name);
         OutputStream dbOut = new FileOutputStream(destinationPath);

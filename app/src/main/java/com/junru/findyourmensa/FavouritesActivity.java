@@ -1,11 +1,14 @@
 package com.junru.findyourmensa;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -15,20 +18,26 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FavouritesActivity extends AppCompatActivity {
 
     private ImageButton button;
+    List<Favourite> favourite_list;
 
     String db_name = "mensa_db.db";
     FavouritesDAO favouritesdao;
+
+    RecyclerView favourite_view;
+    private ArrayList<DataModel> recyclerDataArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favourites);
 
+        //open help page
         button = findViewById(R.id.help_button);
         button.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -52,6 +61,29 @@ public class FavouritesActivity extends AppCompatActivity {
                         .allowMainThreadQueries()
                         .build();
 
+        //to display favourites
+        favouritesdao = database.getFavouritesDAO();
+        favourite_list = favouritesdao.getAllFavourite();
+        Integer favNum = favourite_list.size();
+
+        favourite_view = findViewById(R.id.recyclerView);
+
+        recyclerDataArrayList = new ArrayList<>();
+        for(int i = 0; i < favNum; i++){
+        recyclerDataArrayList.add(new DataModel(favourite_list.get(i).getDesc(), favourite_list.get(i).getPrice(), favourite_list.get(i).getTile())); }
+
+        FavRecyclerViewAdapter adapter = new FavRecyclerViewAdapter(recyclerDataArrayList, FavouritesActivity.this);
+
+        // setting grid layout manager to implement grid view.
+        // in this method '2' represents number of columns to be displayed in grid view.
+        GridLayoutManager layoutManager = new GridLayoutManager(this,2);
+
+        // at last set adapter to recycler view.
+        favourite_view.setLayoutManager(layoutManager);
+        favourite_view.setAdapter(adapter);
+
+
+
     }
 
     private void copyDatabaseFile(String destinationPath) throws IOException {
@@ -72,26 +104,6 @@ public class FavouritesActivity extends AppCompatActivity {
         dbOut.close();
     }
 
-    public void onClickAddDataRecord(View view) {
-        TextView description_view = findViewById(R.id.description);
-        TextView title_view = findViewById(R.id.mensa_name);
-        TextView price_view = findViewById(R.id.price);
-
-
-        String Desc= description_view.getText().toString();
-        String Title = title_view.getText().toString();
-        String Price = price_view.getText().toString();
-
-
-        Favourite NewFavourite = new Favourite();
-        NewFavourite.setDesc(Desc);
-        NewFavourite.setTitle(Title);
-        NewFavourite.setPrice(Price);
-
-        favouritesdao.insert(NewFavourite);
-
-        recreate();
-    }
 
 
     private void openHelpActivity() {

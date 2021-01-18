@@ -8,7 +8,6 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <!--By Junru Lin-->
     <RelativeLayout
         android:id="@+id/top_menu"
         android:layout_width="match_parent"
@@ -49,6 +48,7 @@
         android:layout_below="@id/top_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
         android:layout_marginRight="30dp"
         android:scrollbars="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
