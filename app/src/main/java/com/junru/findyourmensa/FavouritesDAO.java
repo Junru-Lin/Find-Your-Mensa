@@ -23,4 +23,7 @@ public interface FavouritesDAO {
     @Query("SELECT * FROM favourite_food")
     public List<Favourite> getAllFavourite();
 
+    @Query("SELECT * FROM favourite_food WHERE description = :Desc")
+    public List<Favourite> getDishByDesc(String Desc);
+
 }

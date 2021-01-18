@@ -14,6 +14,7 @@ import androidx.room.Room;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class FavRecyclerViewAdapter extends RecyclerView.Adapter<FavRecyclerViewAdapter.RecyclerViewHolder> {
 
@@ -53,14 +54,8 @@ public class FavRecyclerViewAdapter extends RecyclerView.Adapter<FavRecyclerView
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
-                String Desc= DataModel.getText();
-                String Title = DataModel.getMensaName(); //to store MensaName
-                String Price = DataModel.getPrice();
 
-                Favourite NewFavourite = new Favourite();
-                NewFavourite.setDesc(Desc);
-                NewFavourite.setTitle(Title);
-                NewFavourite.setPrice(Price);
+                String Desc= DataModel.getText();
 
                 //to connect favouritedao to db
                 AppDatabase database =
@@ -69,8 +64,12 @@ public class FavRecyclerViewAdapter extends RecyclerView.Adapter<FavRecyclerView
                                 .build(); //connect with the database
 
                 favouritesdao = database.getFavouritesDAO();
-                favouritesdao.insert(NewFavourite);//insert in database
+                List<Favourite> favourite_List= favouritesdao.getDishByDesc(Desc);
+                favouritesdao.delete(favourite_List.get(0));//delete in database
 
+                courseDataArrayList.remove(position);//remove this item
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position,courseDataArrayList.size()-position);//update recyclerview
             }
         });
 
