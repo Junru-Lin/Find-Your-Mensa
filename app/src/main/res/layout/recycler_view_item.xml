@@ -50,6 +50,8 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/allergenes_item"
                 android:layout_below="@id/description"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
                 android:paddingLeft="3dp"
                 android:paddingRight="3dp"
                 android:paddingBottom="2dp"

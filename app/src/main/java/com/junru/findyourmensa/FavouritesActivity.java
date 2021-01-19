@@ -72,7 +72,7 @@ public class FavouritesActivity extends AppCompatActivity {
         //display favourites in recyclerView
         recyclerDataArrayList = new ArrayList<>();
         for(int i = 0; i < favNum; i++){
-        recyclerDataArrayList.add(new DataModel(favourite_list.get(i).getDesc(), favourite_list.get(i).getPrice(), favourite_list.get(i).getTile())); }
+        recyclerDataArrayList.add(new DataModel(favourite_list.get(i).getDesc(), favourite_list.get(i).getPrice(), favourite_list.get(i).getTitle(), favourite_list.get(i).getAller())); }
 
         FavRecyclerViewAdapter adapter = new FavRecyclerViewAdapter(recyclerDataArrayList, FavouritesActivity.this);
 

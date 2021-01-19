@@ -37,7 +37,7 @@ public class Favourite {
         return description;
     }
 
-    public String getTile() {
+    public String getTitle() {
         return mensa;
     }
 

@@ -118,12 +118,12 @@ public class DayPlanActivity extends AppCompatActivity {
                 int mealNum = mealToday.size();
                 if (emp == false) {
                     for(int i = 0; i < mealNum; i++){
-                    recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName(), Double.toString(mealToday.get(i).getStudentPrice()) + "€ [Stu] / " + Double.toString(mealToday.get(i).getEmployeePrice()) + "€", mensaName)); }//,R.drawable.ic_gfglogo));
+                    recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName(), Double.toString(mealToday.get(i).getStudentPrice()) + "€ [Stu] / " + Double.toString(mealToday.get(i).getEmployeePrice()) + "€", mensaName, String.join(",", mealToday.get(i).getNotes()))); }//,R.drawable.ic_gfglogo));
 
                 }
                 else {
-                    recyclerDataArrayList.add(new DataModel("Not available today", " ", mensaName)); //,R.drawable.ic_gfglogo));
-                    recyclerDataArrayList.add(new DataModel("Not available today"," ", mensaName)); //,R.drawable.ic_gfglogo));
+                    recyclerDataArrayList.add(new DataModel("Not available today", " ", mensaName, "None")); //,R.drawable.ic_gfglogo));
+                    recyclerDataArrayList.add(new DataModel("Not available today"," ", mensaName, "None")); //,R.drawable.ic_gfglogo));
 
                 }
 
@@ -174,11 +174,11 @@ public class DayPlanActivity extends AppCompatActivity {
                     int mealNum = mealToday.size();
                     if (emp == false) {
                         for(int i = 0; i < mealNum; i++){
-                            recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName(), Double.toString(mealToday.get(i).getStudentPrice()) + "€ [Stu] / " + Double.toString(mealToday.get(i).getEmployeePrice()) + "€", mensaName)); }//,R.drawable.ic_gfglogo));
+                            recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName(), Double.toString(mealToday.get(i).getStudentPrice()) + "€ [Stu] / " + Double.toString(mealToday.get(i).getEmployeePrice()) + "€", mensaName, String.join(",", mealToday.get(i).getNotes()))); }//,R.drawable.ic_gfglogo));
                     }
                     else {
-                        recyclerDataArrayList.add(new DataModel("Not available today", " ", mensaName)); //,R.drawable.ic_gfglogo));
-                        recyclerDataArrayList.add(new DataModel("Not available today"," ", mensaName)); //,R.drawable.ic_gfglogo));
+                        recyclerDataArrayList.add(new DataModel("Not available today", " ", mensaName, "None")); //,R.drawable.ic_gfglogo));
+                        recyclerDataArrayList.add(new DataModel("Not available today"," ", mensaName, "None")); //,R.drawable.ic_gfglogo));
                     }
 
                     // added data from arraylist to adapter class.
@@ -217,12 +217,12 @@ public class DayPlanActivity extends AppCompatActivity {
         int mealNum = mealToday.size();
         if (emp == false) {
             for(int i = 0; i < mealNum; i++){
-            recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName(), Double.toString(mealToday.get(i).getStudentPrice()) + "€ [Stu] / " + Double.toString(mealToday.get(i).getEmployeePrice()) + "€", mensaName));
+            recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName(), Double.toString(mealToday.get(i).getStudentPrice()) + "€ [Stu] / " + Double.toString(mealToday.get(i).getEmployeePrice()) + "€", mensaName, String.join(",", mealToday.get(i).getNotes())));
             }//,R.drawable.ic_gfglogo));
         }
         else {
-            recyclerDataArrayList.add(new DataModel("Not available today", " ", mensaName)); //,R.drawable.ic_gfglogo));
-            recyclerDataArrayList.add(new DataModel("Not available today"," ", mensaName)); //,R.drawable.ic_gfglogo));
+            recyclerDataArrayList.add(new DataModel("Not available today", " ", mensaName, "None")); //,R.drawable.ic_gfglogo));
+            recyclerDataArrayList.add(new DataModel("Not available today"," ", mensaName, "None")); //,R.drawable.ic_gfglogo));
         }
 
         // added data from arraylist to adapter class.
