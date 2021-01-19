@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="200dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:padding="5dp"
     android:background="@color/background_light_orange">
 
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="100dp"
         android:layout_height="100dp"
+        android:paddingBottom="3dp"
         />
 
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
+        android:layout_below="@id/imageView1"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@id/imageView1"
-        android:layout_alignParentRight="true"
         android:textColor="@color/text_color_dark_orange"
-        android:fontFamily="@font/b612_regular"/>
+        android:fontFamily="@font/b612_regular"
+        android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView1"
-        android:layout_alignRight="@id/imageView1"
-        android:layout_alignParentRight="true"
         android:textColor="@color/text_color_dark_orange"
-        android:fontFamily="@font/cuprum_regular"
-        android:textStyle="italic"/>
+        android:fontFamily="@font/cuprum_regular" />
 
 </RelativeLayout>
