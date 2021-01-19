@@ -14,7 +14,6 @@
         android:layout_marginBottom="20dp"
         card_view:cardCornerRadius="15dp">
 
-
         <RelativeLayout
             android:id="@+id/relativeLayout"
             android:layout_width="match_parent"
@@ -56,19 +55,13 @@
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"/>
 
-            <TextView
-                android:id="@+id/allergenes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/allergenes_item"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_below="@id/description"
-                android:layout_marginTop="10dp"
-                android:textAlignment="center"
-                android:paddingLeft="3dp"
-                android:paddingRight="3dp"
-                android:paddingBottom="2dp"
-                android:fontFamily="@font/cuprum_regular"
-                android:textColor="@color/text_color_dark_orange"/>
+                android:layout_above="@id/price"/>
+               
 
             <TextView
                 android:id="@+id/price"
@@ -80,7 +73,6 @@
                 android:textAlignment="center"
                 android:textSize="13sp"
                 android:layout_alignParentBottom="true"/>
-
 
         </RelativeLayout>
 
