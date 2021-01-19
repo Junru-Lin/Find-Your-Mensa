@@ -161,7 +161,7 @@ public class MapsActivity extends FragmentActivity implements
                     String informations = arg0.getSnippet();
 
                     tv1.setText(title);
-                    tv2.setText(informations);
+                    tv2.setText(informations.split(",")[0] + "\n" + informations.split(",")[1]);
                     im.setImageResource(R.drawable.logo_mensa);
 
                     return v;
