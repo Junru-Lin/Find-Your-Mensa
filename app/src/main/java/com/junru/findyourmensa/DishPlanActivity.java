@@ -56,8 +56,9 @@ public class DishPlanActivity extends AppCompatActivity {
         String mensaName = intent.getStringExtra(getPackageName());
 
         TextView textViewMensaName = findViewById(R.id.mensa_name);
-        textViewMensaName.setText(mensaName);//display mensa name
+        textViewMensaName.setText(mensaName); //display mensa name
 
+        //access database
         final File dbFile = this.getDatabasePath(db_name);
 
         if (!dbFile.exists()) {

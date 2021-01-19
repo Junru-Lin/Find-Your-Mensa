@@ -49,8 +49,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.text.setMaxLines(8);
         holder.price.setText(DataModel.getPrice());
         holder.allergenes.setText(DataModel.getAllergenes());
-        //holder.image.setImageResource(recyclerData.getImgid());
-        //add to favourite button
+
         holder.like_button.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -95,8 +94,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         private TextView price;
         private ImageButton like_button;
         private TextView allergenes;
-        //private TextView mensaName;
-        //private ImageView image;
 
         public RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -104,8 +101,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             price = itemView.findViewById(R.id.price);
             like_button = itemView.findViewById(R.id.like1);
             allergenes = itemView.findViewById(R.id.allergenes);
-            //mensaName = itemView.findViewById(R.id.mensa_name);
-            //image = itemView.findViewById(R.id.imageView);
 
 
         }

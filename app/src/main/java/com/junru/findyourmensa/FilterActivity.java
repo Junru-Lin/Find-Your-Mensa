@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
+/*This activity have a dummy character, because we decide not to implement the filter function
+to our code*/
+
 public class FilterActivity extends AppCompatActivity {
 
     private ImageButton button;
@@ -24,7 +27,7 @@ public class FilterActivity extends AppCompatActivity {
             }
         });
 }
-
+    //help button
     private void openHelpActivity() {
         Intent intent = new Intent(this, HelpActivity.class);
         startActivity(intent);

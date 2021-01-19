@@ -8,6 +8,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "MensaOpenTime")
 
 public class Mensa {
+    //define fields in MensaOpenTime table
 
     protected String OpenTime;
 
@@ -31,16 +32,7 @@ public class Mensa {
         return MensaName;
     }
 
-
     protected String Allergenes;
-
-    public void setAller(String allergenes) {
-        this.Allergenes = allergenes;
-    }
-
-    public String getAller() {
-        return Allergenes;
-    }
 
 }
 

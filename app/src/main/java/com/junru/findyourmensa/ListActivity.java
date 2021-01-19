@@ -38,6 +38,7 @@ public class ListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
 
+        //access database
         final File dbFile = this.getDatabasePath(db_name);
 
         if (!dbFile.exists()) {
@@ -56,11 +57,12 @@ public class ListActivity extends AppCompatActivity {
         listdao = database.getListDAO();
         mensa_list = listdao.getAllMensa();
 
+        //insert from database to list
         list_view = findViewById(R.id.list);
-
         ArrayAdapter<CharSequence> adapter = createAdapterHtml(mensa_list);
         list_view.setAdapter(adapter);
 
+        //help button
         button = findViewById(R.id.help_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,6 +109,7 @@ public class ListActivity extends AppCompatActivity {
         dbOut.close();
     }
 
+    //a method to insert from database to list
     private ArrayAdapter<CharSequence> createAdapterHtml(List<Mensa> u_list) {
 
         Spanned[] html_array = new Spanned[u_list.size()];
