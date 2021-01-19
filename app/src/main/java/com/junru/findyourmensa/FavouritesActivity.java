@@ -46,6 +46,7 @@ public class FavouritesActivity extends AppCompatActivity {
             }
         });
 
+        //access database
         final File dbFile = this.getDatabasePath(db_name);
 
         if (!dbFile.exists()) {
@@ -56,7 +57,7 @@ public class FavouritesActivity extends AppCompatActivity {
             }
         }
 
-        //access database
+        //access database through the room method
         AppDatabase database =
                 Room.databaseBuilder(this, AppDatabase.class, db_name)
                         .allowMainThreadQueries()
@@ -109,8 +110,7 @@ public class FavouritesActivity extends AppCompatActivity {
         dbOut.close();
     }
 
-
-
+    //open help page
     private void openHelpActivity() {
         Intent intent = new Intent(this, HelpActivity.class);
         startActivity(intent);

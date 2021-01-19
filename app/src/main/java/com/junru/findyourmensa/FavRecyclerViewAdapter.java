@@ -17,6 +17,8 @@ import androidx.room.Room;
 import java.util.ArrayList;
 import java.util.List;
 
+//adapter for the Favourite RecyclerView
+
 public class FavRecyclerViewAdapter extends RecyclerView.Adapter<FavRecyclerViewAdapter.RecyclerViewHolder> {
 
     private ArrayList<DataModel> courseDataArrayList;
@@ -52,7 +54,7 @@ public class FavRecyclerViewAdapter extends RecyclerView.Adapter<FavRecyclerView
         holder.price.setText(DataModel.getPrice());
         holder.mensaName.setText(DataModel.getMensaName());
         holder.allergenes.setText(DataModel.getAllergenes());
-        //holder.image.setImageResource(recyclerData.getImgid());
+
         //add to favourite button
         holder.like_button.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
@@ -93,7 +95,6 @@ public class FavRecyclerViewAdapter extends RecyclerView.Adapter<FavRecyclerView
         private ImageButton like_button;
         private TextView allergenes;
         private TextView mensaName;
-        //private ImageView image;
 
         public RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -102,7 +103,6 @@ public class FavRecyclerViewAdapter extends RecyclerView.Adapter<FavRecyclerView
             like_button = itemView.findViewById(R.id.like1);
             allergenes = itemView.findViewById(R.id.allergenes);
             mensaName = itemView.findViewById(R.id.mensa_name);
-            //image = itemView.findViewById(R.id.imageView);
 
         }
     }

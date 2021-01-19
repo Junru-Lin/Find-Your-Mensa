@@ -5,6 +5,7 @@ import android.content.Context;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+//change the width of the grid layout item if rotate the screen
 
 public class AutoFitGridLayoutManager extends GridLayoutManager {
 

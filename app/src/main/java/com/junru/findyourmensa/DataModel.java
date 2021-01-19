@@ -1,5 +1,7 @@
 package com.junru.findyourmensa;
 
+//DataModel for Recycleview
+
 public class DataModel {
 
     private String text;
@@ -20,18 +22,9 @@ public class DataModel {
         return price;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
-    }
-
     public String getMensaName() {return mensaName;}
 
     public String getAllergenes() {return allergenes;}
-
-
-    public void setAllergenes(String allergers) {
-        this.allergenes = allergenes;
-    }  
 
     public DataModel(String text, String price, String mensaName, String allergenes) {
         this.text = text;
