@@ -51,7 +51,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/description"
-                android:layout_above="@id/price"/>
+                android:layout_marginTop="10dp"
+                android:background="@drawable/allergenes_item"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:paddingBottom="2dp"
+                android:fontFamily="@font/cuprum_regular"
+                android:textColor="@color/text_color_dark_orange"/>
 
             <TextView
                 android:id="@+id/price"
