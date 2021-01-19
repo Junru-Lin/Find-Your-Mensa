@@ -116,9 +116,13 @@ public class DayPlanActivity extends AppCompatActivity {
                 // add data to array list (datamodel)
                 boolean emp = mealToday.isEmpty();
                 int mealNum = mealToday.size();
+
                 if (emp == false) {
                     for(int i = 0; i < mealNum; i++){
-                    recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName(), Double.toString(mealToday.get(i).getStudentPrice()) + "€ [Stu] / " + Double.toString(mealToday.get(i).getEmployeePrice()) + "€", mensaName, String.join(",", mealToday.get(i).getNotes()))); }//,R.drawable.ic_gfglogo));
+                    recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName()
+                            , Double.toString(mealToday.get(i).getStudentPrice()) + "€ [Stu] / " + Double.toString(mealToday.get(i).getEmployeePrice()) + "€"
+                            , mensaName
+                            , setNotes(String.join(",", mealToday.get(i).getNotes())))); }//,R.drawable.ic_gfglogo));
 
                 }
                 else {
@@ -174,7 +178,10 @@ public class DayPlanActivity extends AppCompatActivity {
                     int mealNum = mealToday.size();
                     if (emp == false) {
                         for(int i = 0; i < mealNum; i++){
-                            recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName(), Double.toString(mealToday.get(i).getStudentPrice()) + "€ [Stu] / " + Double.toString(mealToday.get(i).getEmployeePrice()) + "€", mensaName, String.join(",", mealToday.get(i).getNotes()))); }//,R.drawable.ic_gfglogo));
+                            recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName()
+                                    , Double.toString(mealToday.get(i).getStudentPrice()) + "€ [Stu] / " + Double.toString(mealToday.get(i).getEmployeePrice()) + "€"
+                                    , mensaName
+                                    , setNotes(String.join(",", mealToday.get(i).getNotes())))); }//,R.drawable.ic_gfglogo));
                     }
                     else {
                         recyclerDataArrayList.add(new DataModel("Not available today", " ", mensaName, "None")); //,R.drawable.ic_gfglogo));
@@ -217,7 +224,10 @@ public class DayPlanActivity extends AppCompatActivity {
         int mealNum = mealToday.size();
         if (emp == false) {
             for(int i = 0; i < mealNum; i++){
-            recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName(), Double.toString(mealToday.get(i).getStudentPrice()) + "€ [Stu] / " + Double.toString(mealToday.get(i).getEmployeePrice()) + "€", mensaName, String.join(",", mealToday.get(i).getNotes())));
+            recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName()
+                    , Double.toString(mealToday.get(i).getStudentPrice()) + "€ [Stu] / " + Double.toString(mealToday.get(i).getEmployeePrice()) + "€"
+                    , mensaName
+                    , setNotes(String.join(",", mealToday.get(i).getNotes()))));
             }//,R.drawable.ic_gfglogo));
         }
         else {
@@ -266,6 +276,14 @@ public class DayPlanActivity extends AppCompatActivity {
     private void openHelpActivity() {
         Intent intent = new Intent(this, HelpActivity.class);
         startActivity(intent);
+    }
+    //to check if the note is null
+    public String setNotes(String s){
+        if (s.trim().isEmpty())
+        {return "None";}
+        else
+        {return s;}
+
     }
 
 

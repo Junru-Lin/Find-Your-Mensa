@@ -44,13 +44,19 @@
                 android:textColor="@color/black"
                 android:textSize="15sp"/>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_below="@id/description"
-                android:layout_above="@id/price"/>
 
+            <TextView
+                android:id="@+id/allergenes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/description"
+                android:background="@drawable/allergenes_item"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:paddingBottom="2dp"
+                android:fontFamily="@font/cuprum_regular"
+                android:textColor="@color/text_color_dark_orange"/>
 
             <TextView
                 android:id="@+id/price"
