@@ -51,6 +51,7 @@
                 android:layout_below="@id/description"
                 android:layout_above="@id/price"/>
 
+
             <TextView
                 android:id="@+id/price"
                 android:layout_width="wrap_content"

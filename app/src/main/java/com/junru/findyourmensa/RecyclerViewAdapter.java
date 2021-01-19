@@ -45,6 +45,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         DataModel DataModel = courseDataArrayList.get(position);
         holder.text.setText(DataModel.getText());
         holder.price.setText(DataModel.getPrice());
+        holder.allergenes.setText(DataModel.getAllergenes());
         //holder.image.setImageResource(recyclerData.getImgid());
         //add to favourite button
         holder.like_button.setOnClickListener(new View.OnClickListener() {
@@ -55,11 +56,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 String Desc= DataModel.getText();
                 String Title = DataModel.getMensaName(); //to store MensaName
                 String Price = DataModel.getPrice();
+                String Allergenes =DataModel.getAllergenes();
 
                 Favourite NewFavourite = new Favourite();
                 NewFavourite.setDesc(Desc);
                 NewFavourite.setTitle(Title);
                 NewFavourite.setPrice(Price);
+                NewFavourite.setAller(Allergenes);
 
                 //to connect favouritedao to db
                 AppDatabase database =
@@ -88,6 +91,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         private TextView text;
         private TextView price;
         private ImageButton like_button;
+        private TextView allergenes;
         //private TextView mensaName;
         //private ImageView image;
 
@@ -96,6 +100,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             text = itemView.findViewById(R.id.description);
             price = itemView.findViewById(R.id.price);
             like_button = itemView.findViewById(R.id.like1);
+            allergenes = itemView.findViewById(R.id.allergenes);
             //mensaName = itemView.findViewById(R.id.mensa_name);
             //image = itemView.findViewById(R.id.imageView);
 
