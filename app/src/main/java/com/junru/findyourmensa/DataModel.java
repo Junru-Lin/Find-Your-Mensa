@@ -28,6 +28,10 @@ public class DataModel {
 
     public String getAllergenes() {return allergenes;}
 
+    public void setAllergenes(String allergers) {
+        this.allergenes = allergenes;
+    }
+
     public DataModel(String text, String price, String mensaName) {
         this.text = text;
         this.price = price;
