@@ -7,9 +7,13 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "favourite_food")
 
 public class Favourite {
+    //define fields in favourite_food table
 
     @NonNull
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    protected Integer ID;
+
+    @NonNull
     protected String description;
 
     public void setDesc(String Desc) {
@@ -36,7 +40,7 @@ public class Favourite {
         return description;
     }
 
-    public String getTile() {
+    public String getTitle() {
         return mensa;
     }
 

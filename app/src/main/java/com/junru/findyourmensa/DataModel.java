@@ -32,7 +32,7 @@ public class DataModel {
         this.allergenes = allergenes;
     }
 
-    public DataModel(String text, String price, String mensaName) {
+    public DataModel(String text, String price, String mensaName, String allergenes) {
         this.text = text;
         this.price = price;
         this.mensaName = mensaName;
