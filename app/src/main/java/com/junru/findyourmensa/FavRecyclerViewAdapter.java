@@ -50,7 +50,7 @@ public class FavRecyclerViewAdapter extends RecyclerView.Adapter<FavRecyclerView
         DataModel DataModel = courseDataArrayList.get(position);
         holder.text.setText(DataModel.getText());
         holder.text.setEllipsize(TextUtils.TruncateAt.END);
-        holder.text.setMaxLines(8);
+        holder.text.setMaxLines(7);
         holder.price.setText(DataModel.getPrice());
         holder.mensaName.setText(DataModel.getMensaName());
         holder.allergenes.setText(DataModel.getAllergenes());
