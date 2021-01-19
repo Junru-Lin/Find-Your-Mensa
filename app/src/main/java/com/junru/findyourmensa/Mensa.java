@@ -10,24 +10,36 @@ import androidx.room.PrimaryKey;
 public class Mensa {
 
     protected String OpenTime;
-    @PrimaryKey
-    @NonNull
-    protected String MensaName;
 
-    public String getName() {
-        return MensaName;
-    }
-
-    public void setName(String mensa_name) {
-        this.MensaName = mensa_name;
+    public void setTime(String open_time) {
+        this.OpenTime = open_time;
     }
 
     public String getTime() {
         return OpenTime;
     }
 
-    public void setTime(String open_time) {
-        this.OpenTime = open_time;
+    @PrimaryKey
+    @NonNull
+    protected String MensaName;
+
+    public void setName(String mensa_name) {
+        this.MensaName = mensa_name;
+    }
+
+    public String getName() {
+        return MensaName;
+    }
+
+
+    protected String Allergenes;
+
+    public void setAller(String allergenes) {
+        this.Allergenes = allergenes;
+    }
+
+    public String getAller() {
+        return Allergenes;
     }
 
 }

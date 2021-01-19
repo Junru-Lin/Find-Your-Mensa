@@ -8,7 +8,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
         android:layout_marginLeft="30dp"
         android:layout_marginBottom="20dp"
         card_view:cardCornerRadius="15dp">
@@ -31,8 +31,7 @@
                 android:padding="0dp"
                 android:scaleType="fitCenter"
                 android:background="@color/background_light_orange"
-                android:src="@drawable/button_pattern"
-                />
+                android:src="@drawable/button_pattern"/>
 
             <TextView
                 android:id="@+id/description"
@@ -43,7 +42,19 @@
                 android:textAlignment="center"
                 android:fontFamily="@font/cuprum_regular"
                 android:textColor="@color/black"
-                android:textSize="15sp" />
+                android:textSize="15sp"/>
+
+            <TextView
+                android:id="@+id/allergenes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/allergenes_item"
+                android:layout_below="@id/description"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
+                android:paddingBottom="2dp"
+                android:fontFamily="@font/cuprum_regular"
+                android:textColor="@color/text_color_dark_orange"/>
 
             <TextView
                 android:id="@+id/price"
@@ -51,7 +62,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:fontFamily="@font/cuprum_regular"
-                android:textColor="@color/text_color_dark_orange"
+                android:textColor="@color/black"
                 android:textAlignment="center"
                 android:textSize="13sp"
                 android:layout_alignParentBottom= "true"/>

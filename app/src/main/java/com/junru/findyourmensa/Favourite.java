@@ -9,13 +9,7 @@ import androidx.room.PrimaryKey;
 public class Favourite {
 
     @NonNull
-    @PrimaryKey(autoGenerate = true)
-    protected Integer ID;
-    /*public void setID(Integer id) {
-        this.ID = id;
-    }*/
-
-    @NonNull
+    @PrimaryKey
     protected String description;
 
     public void setDesc(String Desc) {
@@ -27,11 +21,16 @@ public class Favourite {
 
     public void setTitle(String Title) { this.mensa = Title; }
 
-
     @NonNull
     protected String price;
 
     public void setPrice(String Price) { this.price = Price; }
+
+
+    protected String allergenes;
+
+    public void setAller(String Aller) { this.allergenes = Aller; }
+
 
     public String getDesc() {
         return description;
@@ -42,5 +41,7 @@ public class Favourite {
     }
 
     public String getPrice() {return price;}
+
+    public String getAller() {return allergenes;}
 
 }
