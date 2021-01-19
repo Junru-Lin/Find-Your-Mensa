@@ -2,6 +2,7 @@ package com.junru.findyourmensa;
 
 import android.content.Context;
 import android.os.Build;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,8 @@ public class FavRecyclerViewAdapter extends RecyclerView.Adapter<FavRecyclerView
         // Set the data to textview and imageview.
         DataModel DataModel = courseDataArrayList.get(position);
         holder.text.setText(DataModel.getText());
+        holder.text.setEllipsize(TextUtils.TruncateAt.END);
+        holder.text.setMaxLines(8);
         holder.price.setText(DataModel.getPrice());
         holder.mensaName.setText(DataModel.getMensaName());
         holder.allergenes.setText(DataModel.getAllergenes());

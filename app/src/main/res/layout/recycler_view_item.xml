@@ -41,6 +41,7 @@
                 android:layout_below="@id/like1"
                 android:textAlignment="center"
                 android:fontFamily="@font/cuprum_regular"
+                android:maxLines="8"
                 android:textColor="@color/black"
                 android:textSize="15sp"/>
 
