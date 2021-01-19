@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
+//part of openmensa api/library https://github.com/YannickSpoerl/JavaOpenMensa
 public class Canteen implements Serializable {
 
     static final long serialVersionUID = 79L;

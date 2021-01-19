@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+//part of openmensa api/library https://github.com/YannickSpoerl/JavaOpenMensa
 public class Data {
 
     private Parser parser;

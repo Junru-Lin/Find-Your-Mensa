@@ -3,6 +3,7 @@ package com.junru.findyourmensa;
 import java.util.List;
 import java.util.Map;
 
+//part of openmensa api/library https://github.com/YannickSpoerl/JavaOpenMensa
 public class Meal {
 
     private String date;

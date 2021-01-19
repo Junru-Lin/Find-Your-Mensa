@@ -10,6 +10,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.*;
 
+//part of openmensa api/library https://github.com/YannickSpoerl/JavaOpenMensa
 public class Parser {
 
     private URL url;
