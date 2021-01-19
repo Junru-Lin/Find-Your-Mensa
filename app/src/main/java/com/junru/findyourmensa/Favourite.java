@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "favourite_food")
 
 public class Favourite {
+    //define fields in favourite_food table
 
     @NonNull
     @PrimaryKey

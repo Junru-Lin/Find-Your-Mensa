@@ -45,6 +45,7 @@ public class MapsActivity extends FragmentActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.Map);
@@ -109,16 +110,12 @@ public class MapsActivity extends FragmentActivity implements
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.getUiSettings().setMyLocationButtonEnabled(true);
+        //change map style
         mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this, R.raw.map_style));
 
-        // Add a marker in Dresden and move the camera
+        // move the camera to dresden
         LatLng dresden = new LatLng(51.050407, 13.737262);
-        /*mMap.addMarker(new MarkerOptions()
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.new_marker))
-                .anchor(0.5f, 1)
-                .position(dresden)
-                .title("Marker in Dresden")
-        );*/
+
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(dresden, 14));
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -129,6 +126,7 @@ public class MapsActivity extends FragmentActivity implements
         data.initialize(); // initialize Data
 
         Set<Canteen> MensaInDresden = data.getCanteenByCity("Dresden"); //got a certain canteen
+        //add marker for mensa
         for (Canteen canteen : MensaInDresden) {
             LatLng canteenLatLng = new LatLng(canteen.getLatitude(), canteen.getLongitude());
             String canteenName = canteen.getName();
@@ -165,8 +163,6 @@ public class MapsActivity extends FragmentActivity implements
                     tv1.setText(title);
                     tv2.setText(informations);
                     im.setImageResource(R.drawable.logo_mensa);
-
-
 
                     return v;
 

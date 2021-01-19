@@ -20,6 +20,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //Initialize splash screen
         EasySplashScreen config = new EasySplashScreen(SplashScreenActivity.this)
                 .withFullScreen()
                 .withTargetActivity(MapsActivity.class)
@@ -28,7 +29,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 .withAfterLogoText("Find Your Mensa")
                 .withLogo(R.drawable.logo_mensa);
 
-
+        //set text color, size and font style for LogoTextView
         config.getAfterLogoTextView().setTextColor(Color.parseColor("#FABD41"));
         config.getAfterLogoTextView().setTextSize(36);
         config.getAfterLogoTextView().setTypeface(ResourcesCompat.getFont(this, R.font.cuprum_regular));

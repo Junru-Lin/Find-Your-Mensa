@@ -56,7 +56,7 @@ public class DishPlanActivity extends AppCompatActivity {
         String mensaName = intent.getStringExtra(getPackageName());
 
         TextView textViewMensaName = findViewById(R.id.mensa_name);
-        textViewMensaName.setText(mensaName);
+        textViewMensaName.setText(mensaName);//display mensa name
 
         final File dbFile = this.getDatabasePath(db_name);
 
@@ -179,10 +179,7 @@ public class DishPlanActivity extends AppCompatActivity {
 
 
 
-
-
-
-        button = findViewById(R.id.help_button);
+        button = findViewById(R.id.help_button);//click to open help page
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

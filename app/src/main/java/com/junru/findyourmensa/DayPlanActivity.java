@@ -112,24 +112,19 @@ public class DayPlanActivity extends AppCompatActivity {
                     // created new array list..
                 recyclerDataArrayList=new ArrayList<>();
 
-                // added data to array list
 
+                // add data to array list (datamodel)
                 boolean emp = mealToday.isEmpty();
                 int mealNum = mealToday.size();
                 if (emp == false) {
                     for(int i = 0; i < mealNum; i++){
                     recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName(), Double.toString(mealToday.get(i).getStudentPrice()) + "€ [Stu] / " + Double.toString(mealToday.get(i).getEmployeePrice()) + "€", mensaName)); }//,R.drawable.ic_gfglogo));
-                    //recyclerDataArrayList.add(new DataModel(mensaToday.get(1).toString())); //,R.drawable.ic_gfglogo));
-                    //recyclerDataArrayList.add(new DataModel(mensaToday.get(2).toString()));//,R.drawable.ic_gfglogo));
-                    //recyclerDataArrayList.add(new DataModel("Item4")); //,R.drawable.ic_gfglogo));
-                    //recyclerDataArrayList.add(new DataModel("Item5")); //,R.drawable.ic_gfglogo));
+
                 }
                 else {
                     recyclerDataArrayList.add(new DataModel("Not available today", " ", mensaName)); //,R.drawable.ic_gfglogo));
                     recyclerDataArrayList.add(new DataModel("Not available today"," ", mensaName)); //,R.drawable.ic_gfglogo));
-                    //recyclerDataArrayList.add(new DataModel("Not available today")); //,R.drawable.ic_gfglogo));
-                    //recyclerDataArrayList.add(new DataModel("Item4")); //,R.drawable.ic_gfglogo));
-                    //recyclerDataArrayList.add(new DataModel("Item5")); //,R.drawable.ic_gfglogo));
+
                 }
 
                 // added data from arraylist to adapter class.
@@ -150,7 +145,8 @@ public class DayPlanActivity extends AppCompatActivity {
             }
         });
 
-        next_button = findViewById(R.id.next_button);//go next triangle button
+        //go next triangle button
+        next_button = findViewById(R.id.next_button);
         next_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -173,24 +169,16 @@ public class DayPlanActivity extends AppCompatActivity {
                     // created new array list..
                     recyclerDataArrayList = new ArrayList<>();
 
-                    // added data to array list
-
+                    // add data to array list (datamodel)
                     boolean emp = mealToday.isEmpty();
                     int mealNum = mealToday.size();
                     if (emp == false) {
                         for(int i = 0; i < mealNum; i++){
                             recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName(), Double.toString(mealToday.get(i).getStudentPrice()) + "€ [Stu] / " + Double.toString(mealToday.get(i).getEmployeePrice()) + "€", mensaName)); }//,R.drawable.ic_gfglogo));
-                        //recyclerDataArrayList.add(new DataModel(mensaToday.get(1).toString())); //,R.drawable.ic_gfglogo));
-                        //recyclerDataArrayList.add(new DataModel(mensaToday.get(2).toString()));//,R.drawable.ic_gfglogo));
-                        //recyclerDataArrayList.add(new DataModel("Item4")); //,R.drawable.ic_gfglogo));
-                        //recyclerDataArrayList.add(new DataModel("Item5")); //,R.drawable.ic_gfglogo));
                     }
                     else {
                         recyclerDataArrayList.add(new DataModel("Not available today", " ", mensaName)); //,R.drawable.ic_gfglogo));
                         recyclerDataArrayList.add(new DataModel("Not available today"," ", mensaName)); //,R.drawable.ic_gfglogo));
-                        //recyclerDataArrayList.add(new DataModel("Not available today")); //,R.drawable.ic_gfglogo));
-                        //recyclerDataArrayList.add(new DataModel("Item4")); //,R.drawable.ic_gfglogo));
-                        //recyclerDataArrayList.add(new DataModel("Item5")); //,R.drawable.ic_gfglogo));
                     }
 
                     // added data from arraylist to adapter class.
@@ -231,17 +219,10 @@ public class DayPlanActivity extends AppCompatActivity {
             for(int i = 0; i < mealNum; i++){
             recyclerDataArrayList.add(new DataModel(mealToday.get(i).getName(), Double.toString(mealToday.get(i).getStudentPrice()) + "€ [Stu] / " + Double.toString(mealToday.get(i).getEmployeePrice()) + "€", mensaName));
             }//,R.drawable.ic_gfglogo));
-            //recyclerDataArrayList.add(new DataModel(mensaToday.get(1).toString())); //,R.drawable.ic_gfglogo));
-            //recyclerDataArrayList.add(new DataModel(mensaToday.get(2).toString()));//,R.drawable.ic_gfglogo));
-            //recyclerDataArrayList.add(new DataModel("Item4")); //,R.drawable.ic_gfglogo));
-            //recyclerDataArrayList.add(new DataModel("Item5")); //,R.drawable.ic_gfglogo));
         }
         else {
             recyclerDataArrayList.add(new DataModel("Not available today", " ", mensaName)); //,R.drawable.ic_gfglogo));
             recyclerDataArrayList.add(new DataModel("Not available today"," ", mensaName)); //,R.drawable.ic_gfglogo));
-            //recyclerDataArrayList.add(new DataModel("Not available today")); //,R.drawable.ic_gfglogo));
-            //recyclerDataArrayList.add(new DataModel("Item4")); //,R.drawable.ic_gfglogo));
-            //recyclerDataArrayList.add(new DataModel("Item5")); //,R.drawable.ic_gfglogo));
         }
 
         // added data from arraylist to adapter class.
@@ -281,6 +262,7 @@ public class DayPlanActivity extends AppCompatActivity {
         });
     }
 
+    //open help page
     private void openHelpActivity() {
         Intent intent = new Intent(this, HelpActivity.class);
         startActivity(intent);

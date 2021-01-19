@@ -56,18 +56,20 @@ public class FavouritesActivity extends AppCompatActivity {
             }
         }
 
+        //access database
         AppDatabase database =
                 Room.databaseBuilder(this, AppDatabase.class, db_name)
                         .allowMainThreadQueries()
                         .build();
 
-        //to display favourites
+        //to get favourites
         favouritesdao = database.getFavouritesDAO();
         favourite_list = favouritesdao.getAllFavourite();
         Integer favNum = favourite_list.size();
 
         favourite_view = findViewById(R.id.recyclerView);
 
+        //display favourites in recyclerView
         recyclerDataArrayList = new ArrayList<>();
         for(int i = 0; i < favNum; i++){
         recyclerDataArrayList.add(new DataModel(favourite_list.get(i).getDesc(), favourite_list.get(i).getPrice(), favourite_list.get(i).getTile())); }
