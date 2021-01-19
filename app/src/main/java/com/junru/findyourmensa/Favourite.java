@@ -10,7 +10,10 @@ public class Favourite {
     //define fields in favourite_food table
 
     @NonNull
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    protected Integer ID;
+
+    @NonNull
     protected String description;
 
     public void setDesc(String Desc) {
